@@ -9,7 +9,7 @@ A new NodeJS web framework - giving back power to developers with an unopinionat
 ![Maritime Development Badge](https://img.shields.io/badge/development-ongoing-brightgreen)
 ![Pull Requests Open Badge](https://img.shields.io/badge/pull%20requests-welcome-brightgreen)
 
-<!-- 
+<!--
 ## License
 
 [MIT](LICENSE) -->
