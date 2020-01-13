@@ -1,4 +1,4 @@
-<img src="./docs/logo.png" alt="Maritime Web Framework Logo for NodeJS"/>
+![Maritime NodeJS Web Framework Logo](https://i.imgur.com/psmyh0O.png)
 
 A new NodeJS web framework - giving back power to developers with an unopinionated, clean design.
 
