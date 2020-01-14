@@ -38,11 +38,15 @@ Router.prototype.rebaseRouter = function(routeBase) {
   return this;
 };
 
-Router.prototype.use = function(...newMiddleware) {
+Router.prototype.use = function(target, ...newMiddleware) {
+  if (typeof target !== "string") newMiddleware.unshift(target);
+
   // apply passed middleware to each route on this router
   for (let i = 0; i < this.routes.length; i++) {
-    this.routes[i].middleware = this.routes[i].middleware.concat(newMiddleware);
+    this.routes[i].applyMiddleware(target, newMiddleware);
   }
+
+  return this;
 };
 
 Router.prototype.absorbRouter = function(...args) {

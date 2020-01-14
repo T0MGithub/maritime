@@ -1,6 +1,6 @@
 /**
  * CREDIT: Middleware compiler adapted from NPM module koa-compose.
- * 
+ *
  * @param {list} List of middleware functions to compile to one function
  * @returns {function}
  */

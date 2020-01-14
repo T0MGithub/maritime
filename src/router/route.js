@@ -24,4 +24,12 @@ Route.prototype.rebaseRoute = function(routeBase) {
   return this;
 };
 
+Route.prototype.applyMiddleware = function(target, middleware) {
+  if (typeof target == "string") {
+    if (this.match(target)) this.middleware = this.middleware.concat(middleware);
+  } else {
+    this.middleware = this.middleware.concat(middleware);
+  }
+};
+
 module.exports = Route;
