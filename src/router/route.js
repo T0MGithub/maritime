@@ -26,7 +26,8 @@ Route.prototype.rebaseRoute = function(routeBase) {
 
 Route.prototype.applyMiddleware = function(target, middleware) {
   if (typeof target == "string") {
-    if (this.match(target)) this.middleware = this.middleware.concat(middleware);
+    if (this.match(target))
+      this.middleware = this.middleware.concat(middleware);
   } else {
     this.middleware = this.middleware.concat(middleware);
   }
