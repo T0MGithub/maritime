@@ -24,7 +24,7 @@ module.exports = function(middleware) {
       // if out of middleware, assign the next function from the parameters to be executed next
       if (i === middleware.length) fn = next;
       // if no function (out of middleware and no provided parameter), end middleware execution
-      if (!fn) return Promise.resolve();
+      if (!fn) return Promise.resolve(data);
       try {
         // run next function, binding the second parameter to the next middleware in the chain
         return Promise.resolve(fn(data, dispatch.bind(null, i + 1)));
