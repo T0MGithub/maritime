@@ -101,7 +101,7 @@ module.exports = class Maritime {
 
   constructData(req, res) {
     const data = Object.create(this.dataObj);
-    
+
     // create request and response objects
     const request = Object.setPrototypeOf(req, this.requestObj);
     const response = Object.setPrototypeOf(res, this.responseObj);
