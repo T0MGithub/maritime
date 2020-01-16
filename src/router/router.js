@@ -49,6 +49,25 @@ Router.prototype.use = function(target, ...newMiddleware) {
   return this;
 };
 
+Router.prototype.findRoute = function(path, method) {
+  let routes = this.routes;
+  let matches = [];
+
+  let route, match;
+  for (let i = 0; i < routes.length; i++) {
+    route = routes[i];
+    match = route.match(path);
+
+    if (match) {
+      if (route.methods.length === 0 || route.methods.includes(method)) {
+        matches.push(route);
+      }
+    }
+  }
+
+  return matches;
+};
+
 Router.prototype.absorbRouter = function(...args) {
   var baseRoute, middleware, router;
   // if first argument is a string, a route should be applied to absorbed router

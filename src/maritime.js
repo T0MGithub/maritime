@@ -71,11 +71,32 @@ module.exports = class Maritime {
     return serverFunction.bind(this);
   }
 
+  findRoutes(path, method) {
+    let totalMatches = [];
+    let match;
+    for (let i = 0; i < this.mountedRouters.length; i++) {
+      match = this.mountedRouters[i].findRoute(path, method.toLowerCase());
+      totalMatches = totalMatches.concat(match);
+    }
+    return totalMatches;
+  }
+
   handleRequest(data) {
-    // compile main middleware
+    // compile global middleware
     const compiledMiddleware = middlewareCompiler(this.globalMiddleware);
 
-    return compiledMiddleware(data);
+    // match a route
+    let path = data.req.request.url;
+    let method = data.req.request.method;
+    const routeMatches = this.findRoutes(path, method);
+
+    // compile router specific middleware
+    if (routeMatches.length > 0) {
+      let routeMiddleware = middlewareCompiler(routeMatches[0].middleware);
+      return compiledMiddleware(data, routeMiddleware);
+    } else {
+      return compiledMiddleware(data);
+    }
   }
 
   constructData(req, res) {
