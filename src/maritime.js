@@ -86,8 +86,8 @@ module.exports = class Maritime {
     const compiledMiddleware = middlewareCompiler(this.globalMiddleware);
 
     // match a route
-    let path = data.req.request.url;
-    let method = data.req.request.method;
+    let path = data.req.url;
+    let method = data.req.method;
     const routeMatches = this.findRoutes(path, method);
 
     // compile router specific middleware
@@ -100,18 +100,20 @@ module.exports = class Maritime {
   }
 
   constructData(req, res) {
-    // construct data objects
     const data = Object.create(this.dataObj);
-    const request = Object.create(this.requestObj);
-    const response = Object.create(this.responseObj);
+    
+    // create request and response objects
+    const request = Object.setPrototypeOf(req, this.requestObj);
+    const response = Object.setPrototypeOf(res, this.responseObj);
 
-    // add request and response objects to main data object
+    // add objects to each other
+    request.app = response.app = this;
+    request.res = response;
+    response.req = request;
+
+    // add objects to data object
     data.req = request;
     data.res = response;
-
-    // add raw request data to constructed data
-    data.req.request = req;
-    data.res.response = res;
 
     return data;
   }
