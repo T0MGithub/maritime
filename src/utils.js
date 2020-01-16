@@ -1,4 +1,4 @@
-const contentType = require('content-type');
+const contentType = require("content-type");
 
 module.exports.nodeHttpVerbs = () => [
   "get",
