@@ -32,7 +32,7 @@ $ npm i maritime --save
 
 Author: [Tom](https://github.com/t0mgithub)
 
-This repository utilises code from other open-source projects, including NPM dependencies and some code from other open-source projects such as [Express](https://github.com/expressjs/express) and [Koa](https://github.com/koajs/joa). Thanks to the contributors to those projects and the wider open source ecosystem.
+This repository utilises code from other open-source projects, including NPM dependencies and some code from other open-source projects such as [Express](https://github.com/expressjs/express) and [Koa](https://github.com/koajs/koa). Thanks to the contributors to those projects and the wider open source ecosystem.
 
 ## License
 
