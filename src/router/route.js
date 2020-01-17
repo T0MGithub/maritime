@@ -41,7 +41,7 @@ const convertWildcards = function(path) {
 
 function Route(methods, path, middleware, options) {
   this.methods = methods;
-  if (this.path.indexOf('*') !== 0) path = convertWildcards(path);
+  if (path.indexOf('*') !== -1) path = convertWildcards(path);;
   this.path = path;
   this.middleware = middleware;
   this.options = options || {};
@@ -57,7 +57,7 @@ Route.prototype.match = function(path) {
 Route.prototype.rebaseRoute = function(routeBase) {
   if (this.path) {
     this.path = routeBase + this.path;
-    if (this.path.indexOf('*') !== 0) this.path = convertWildcards(this.path);
+    if (this.path.indexOf('*') !== -1) this.path = convertWildcards(this.path);
 
     this.parameters = [];
     this.regex = pathToRegexp(this.path, this.parameters, this.options);
