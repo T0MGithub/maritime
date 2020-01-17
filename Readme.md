@@ -22,7 +22,7 @@ app.listen(3000);
 
 ## Installation
 
-Koa requires Node v7.6.0 or higher for async and promise functionality.
+Maritime requires Node v7.6.0 or higher for async and promise functionality.
 
 ```
 $ npm i maritime --save
