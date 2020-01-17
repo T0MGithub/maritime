@@ -12,7 +12,7 @@ const Maritime = require("maritime");
 const app = new Maritime();
 const router = new Maritime.router();
 
-router.get("/", data => {
+router.get("*", data => {
   data.res.send("Hello World!");
 });
 
