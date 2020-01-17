@@ -1,5 +1,26 @@
 const { pathToRegexp, match, parse, compile } = require("path-to-regexp");
 
+/**
+ * Convert wildcards in the route into path-to-regexp required syntax, "(.*)".
+ * Only asteriks that represents wildcards should be converted, not ones
+ * part of a route name/parameter or part of other syntax. Therefore, this
+ * function only converts wildcards with the start of the string or a "/" on one
+ * side and the end of the string or a "/" on the other side.
+ * 
+ * e.g.
+ * 
+ * '(.*)' ---> '(.*)'
+ * '/test*' ---> '/test*'
+ * '/*test'/ ---> '/*test'
+ * 
+ * '/*' ---> '/(.*)'
+ * '/test/*' ---> '/test/(.*)'
+ * '*' ---> '(.*)' 
+ * 
+ * @param {string} path
+ * @return {string} path with converted wildcards 
+ */
+
 const convertWildcards = function(path) {
   let char;
   for (let i = 0; i < path.length; i++) {
@@ -20,7 +41,8 @@ const convertWildcards = function(path) {
 
 function Route(methods, path, middleware, options) {
   this.methods = methods;
-  this.path = convertWildcards(path);
+  if (this.path.indexOf('*') !== 0) path = convertWildcards(path);
+  this.path = path;
   this.middleware = middleware;
   this.options = options || {};
   this.parameters = [];
@@ -34,8 +56,9 @@ Route.prototype.match = function(path) {
 
 Route.prototype.rebaseRoute = function(routeBase) {
   if (this.path) {
-    this.path = convertWildcards(this.path);
     this.path = routeBase + this.path;
+    if (this.path.indexOf('*') !== 0) this.path = convertWildcards(this.path);
+
     this.parameters = [];
     this.regex = pathToRegexp(this.path, this.parameters, this.options);
   }
