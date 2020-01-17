@@ -6,13 +6,34 @@ const responseObj = require("./data/res.js");
 const maritimeRouter = require("./router/router.js");
 
 module.exports = class Maritime {
-  constructor() {
+  constructor(options = {}) {
     this.globalMiddleware = [];
     this.mountedRouters = [];
 
     this.dataObj = Object.create(dataObj);
     this.requestObj = Object.create(requestObj);
     this.responseObj = Object.create(responseObj);
+
+    this.env = options.env || process.env.NODE_ENV || "development";
+    this.settings = {};
+
+    this.enable("x-powered-by", true);
+  }
+
+  enable(setting) {
+    return this.setOption(setting, true);
+  }
+
+  disable(setting) {
+    return this.setOption(setting, false);
+  }
+
+  setOption(setting, val) {
+    this.settings[setting] = val;
+  }
+
+  getOption(setting) {
+    return this.settings[setting];
   }
 
   use(middleware) {
@@ -110,6 +131,10 @@ module.exports = class Maritime {
     request.app = response.app = this;
     request.res = response;
     response.req = request;
+
+    // set x-powered-by header
+    if (this.getOption("x-powered-by") === true)
+      res.setHeader("X-Powered-By", "Maritime");
 
     // add objects to data object
     data.req = request;
