@@ -10,6 +10,17 @@
   },
   "author": "Tom",
   "license": "MIT",
+  "keywords": [
+    "maritime",
+    "web",
+    "framework",
+    "router",
+    "app",
+    "api",
+    "http",
+    "application",
+    "middleware"
+  ],
   "dependencies": {
     "content-type": "^1.0.4",
     "path-to-regexp": "^6.1.0",
