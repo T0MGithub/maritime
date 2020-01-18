@@ -4,6 +4,7 @@ const dataObj = require("./data/data.js");
 const requestObj = require("./data/req.js");
 const responseObj = require("./data/res.js");
 const maritimeRouter = require("./router/router.js");
+const url = require("url");
 
 module.exports = class Maritime {
   constructor(options = {}) {
@@ -103,12 +104,14 @@ module.exports = class Maritime {
     const compiledMiddleware = middlewareCompiler(this.globalMiddleware);
 
     // match a route
-    let path = data.req.url;
+    let path = data.req.strippedPath;
     let method = data.req.method;
     const matchData = this.findRouteMatch(path, method);
-
+    
     // compile router specific middleware
     if (matchData) {
+      data.req.params = matchData.route.matchParameters(data.req.strippedPath);
+
       let routerMiddleware = matchData.router.middleware;
       let routeMiddleware = matchData.route.middleware;
       let extraMiddleware = routerMiddleware.concat(routeMiddleware);
@@ -135,6 +138,8 @@ module.exports = class Maritime {
     // set x-powered-by header
     if (this.get("x-powered-by") === true)
       res.setHeader("X-Powered-By", "Maritime");
+
+    request.strippedPath = url.parse(req.url).pathname;
 
     // add objects to data object
     data.req = request;

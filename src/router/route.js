@@ -66,4 +66,10 @@ Route.prototype.rebaseRoute = function(routeBase) {
   return this;
 };
 
+Route.prototype.matchParameters = function(url) {
+  const matchParameters = match(this.path, { decode: decodeURIComponent });
+  if (matchParameters === false) return {};
+  return matchParameters(url).params;
+}
+
 module.exports = Route;
