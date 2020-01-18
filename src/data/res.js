@@ -118,13 +118,6 @@ res.set = res.header = function(field, val) {
 res.sendFile = function(filePath, options = {}) {
   if (filePath === undefined) throw new Error("File path argument required.");
 
-  // check absolute path provided
-  if (!path.isAbsolute(filePath)) {
-    throw new Error(
-      "Either an absolute path must be provided, or a base directory for the relative path must be provided through options.root"
-    );
-  }
-
   send(this.req, filePath, options).pipe(this);
 };
 
