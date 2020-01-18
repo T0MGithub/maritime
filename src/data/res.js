@@ -116,7 +116,6 @@ res.set = res.header = function(field, val) {
 };
 
 res.sendFile = function(filePath, options = {}) {
-  console.log(filePath);
   if (filePath === undefined) throw new Error("File path argument required.");
 
   send(this.req, filePath, options).pipe(this);
