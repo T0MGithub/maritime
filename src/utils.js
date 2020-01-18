@@ -29,6 +29,14 @@ module.exports.nodeHttpVerbs = () => [
   "connect"
 ];
 
+module.exports.addGetter = function(object, name, getterFunction) {
+  Object.defineProperty(object, name, {
+    get: getterFunction,
+    configurable: true,
+    enumerable: true
+  });
+};
+
 module.exports.setCharset = function setCharset(type, charset) {
   if (!type || !charset) {
     return type;
