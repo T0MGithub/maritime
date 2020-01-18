@@ -20,6 +20,10 @@ app.mount(router);
 app.listen(3000);
 ```
 
+## Getting Started
+
+* [Maritime Examples](https://github.com/t0mgithub/maritime-examples) - A set of applications written in Maritime to show various functionalities.
+
 ## Installation
 
 Maritime requires Node v7.6.0 or higher for async and promise functionality.
