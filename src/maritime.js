@@ -1,10 +1,12 @@
 const http = require("http");
+const https = require("https");
 const middlewareCompiler = require("./middleware/middlewareCompiler.js");
 const dataObj = require("./data/data.js");
 const requestObj = require("./data/req.js");
 const responseObj = require("./data/res.js");
 const maritimeRouter = require("./router/router.js");
 const url = require("url");
+const fs = require("fs");
 
 module.exports = class Maritime {
   constructor(options = {}) {
@@ -148,8 +150,48 @@ module.exports = class Maritime {
     return data;
   }
 
+  /**
+   * @param {Number} [port] Port number to run the server on
+   * @param {Object=} [options] Server options
+   * @param {String} [option.key] Key to use for HTTPS server, can be key data or file to load
+   * @param {String} [option.cert] Cert to use for HTTPS server, can be key data or file to load
+   * @param {Number} [options.hostname] Specifies the IP address we want to listen to
+   * @param {Number} [options.backlog] Specifies the max length of the queue of pending connections
+   * @param {Object=} [callback] Callback to run after server is created
+   * 
+   * @returns HTTP/HTTPS server
+   */
   listen(...args) {
-    const server = http.createServer(this.handleServer());
-    return server.listen(...args);
+    let port, options, callback;
+    if (typeof args[1] == 'function') {
+      port = args[0];
+      callback = args[1];
+      options = {};
+    } else {
+      port = args[0];
+      options = args[1] || {};
+      callback = args[2];
+    }
+
+    const secureServer = (options.https === true);
+
+    const checkToLoad = function(data) {
+      if (!data) return data;
+      if (data.includes('.pem')) return fs.readFileSync(data);
+      return data;
+    }
+
+    let serverObj;
+    if (secureServer) {
+      const httpConfig = {
+        key: checkToLoad(options.key),
+        cert: checkToLoad(options.cert)
+      };
+      serverObj = https.createServer(httpConfig, this.handleServer());
+    } else {
+      serverObj = http.createServer(this.handleServer());
+    }
+
+    return serverObj.listen(port, options.hostname, options.backlog, callback);
   }
 };
