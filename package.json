@@ -6,8 +6,16 @@
   "repository": "t0mgithub/maritime",
   "homepage": "https://github.com/t0mgithub/maritime#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write {**,**/**}/*.{js,md}"
   },
   "author": "Tom",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "content-type": "^1.0.4",
+    "path-to-regexp": "^6.1.0",
+    "send": "^0.17.1"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
 }
