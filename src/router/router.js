@@ -53,7 +53,8 @@ Router.prototype.findRoute = function(path, method) {
     route = routes[i];
 
     methodMatch = route.methods === method;
-    methodIncluded = Array.isArray(route.methods) && route.methods.includes(method);
+    methodIncluded =
+      Array.isArray(route.methods) && route.methods.includes(method);
     if (methodMatch || methodIncluded) {
       match = route.match(path);
 
