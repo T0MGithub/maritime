@@ -128,4 +128,13 @@ res.sendFile = function(filePath, options = {}) {
   send(this.req, filePath, options).pipe(this);
 };
 
+res.redirect = function(url, altName) {
+  if (url === "back") url = this.get("Referrer") || altName || '/';
+  this.set("Location", encodeURI(url));
+
+  this.statusCode = 302;
+
+  this.send('Redirecting you.');
+};
+
 module.exports = res;
