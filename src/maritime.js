@@ -107,7 +107,7 @@ module.exports = class Maritime {
     let path = data.req.strippedPath;
     let method = data.req.method;
     const matchData = this.findRouteMatch(path, method);
-    
+
     // compile router specific middleware
     if (matchData) {
       data.req.params = matchData.route.matchParameters(data.req.strippedPath);

@@ -116,18 +116,19 @@ res.set = res.header = function(field, val) {
 };
 
 res.sendFile = function(filePath, options = {}) {
+  console.log(filePath);
   if (filePath === undefined) throw new Error("File path argument required.");
 
   send(this.req, filePath, options).pipe(this);
 };
 
 res.redirect = function(url, altName) {
-  if (url === "back") url = this.get("Referrer") || altName || '/';
+  if (url === "back") url = this.get("Referrer") || altName || "/";
   this.set("Location", encodeURI(url));
 
   this.statusCode = 302;
 
-  this.send('Redirecting you.');
+  this.send("Redirecting you.");
 };
 
 module.exports = res;

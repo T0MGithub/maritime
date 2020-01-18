@@ -22,7 +22,7 @@ app.listen(3000);
 
 ## Getting Started
 
-* [Maritime Examples](https://github.com/t0mgithub/maritime-examples) - A set of applications written in Maritime to show various functionalities.
+- [Maritime Examples](https://github.com/t0mgithub/maritime-examples) - A set of applications written in Maritime to show various functionalities.
 
 ## Installation
 
