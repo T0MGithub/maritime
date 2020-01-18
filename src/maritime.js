@@ -1,5 +1,5 @@
 const http = require("http");
-const middlewareCompiler = require("./middlewareCompiler.js");
+const middlewareCompiler = require("./middleware/middlewareCompiler.js");
 const dataObj = require("./data/data.js");
 const requestObj = require("./data/req.js");
 const responseObj = require("./data/res.js");

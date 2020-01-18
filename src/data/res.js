@@ -62,9 +62,6 @@ res.send = function(body) {
     this.set("Content-Length", len);
   }
 
-  // freshness
-  if (req.fresh) this.statusCode = 304;
-
   // strip irrelevant headers
   if (204 === this.statusCode || 304 === this.statusCode) {
     this.removeHeader("Content-Type");
@@ -118,10 +115,8 @@ res.set = res.header = function(field, val) {
   return this;
 };
 
-res.sendFile = function(filePath, options = {}, callback) {
+res.sendFile = function(filePath, options = {}) {
   if (filePath === undefined) throw new Error("File path argument required.");
-
-  if (options.root) filePath = path.join(options.root, filePath);
 
   // check absolute path provided
   if (!path.isAbsolute(filePath)) {
