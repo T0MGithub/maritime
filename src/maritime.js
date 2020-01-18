@@ -17,22 +17,14 @@ module.exports = class Maritime {
     this.env = options.env || process.env.NODE_ENV || "development";
     this.settings = {};
 
-    this.enable("x-powered-by", true);
+    this.set("x-powered-by", true);
   }
 
-  enable(setting) {
-    return this.setOption(setting, true);
-  }
-
-  disable(setting) {
-    return this.setOption(setting, false);
-  }
-
-  setOption(setting, val) {
+  set(setting, val) {
     this.settings[setting] = val;
   }
 
-  getOption(setting) {
+  get(setting) {
     return this.settings[setting];
   }
 
@@ -92,14 +84,12 @@ module.exports = class Maritime {
     return serverFunction.bind(this);
   }
 
-  findRoutes(path, method) {
-    let totalMatches = [];
+  findRouteMatch(path, method) {
     let match;
     for (let i = 0; i < this.mountedRouters.length; i++) {
       match = this.mountedRouters[i].findRoute(path, method.toLowerCase());
-      totalMatches = totalMatches.concat(match);
+      if (match) return match;
     }
-    return totalMatches;
   }
 
   handleRequest(data) {
@@ -109,11 +99,11 @@ module.exports = class Maritime {
     // match a route
     let path = data.req.url;
     let method = data.req.method;
-    const routeMatches = this.findRoutes(path, method);
+    const routeMatch = this.findRouteMatch(path, method);
 
     // compile router specific middleware
-    if (routeMatches.length > 0) {
-      let routeMiddleware = middlewareCompiler(routeMatches[0].middleware);
+    if (routeMatch) {
+      let routeMiddleware = middlewareCompiler(routeMatch.middleware);
       return compiledMiddleware(data, routeMiddleware);
     } else {
       return compiledMiddleware(data);
@@ -133,7 +123,7 @@ module.exports = class Maritime {
     response.req = request;
 
     // set x-powered-by header
-    if (this.getOption("x-powered-by") === true)
+    if (this.get("x-powered-by") === true)
       res.setHeader("X-Powered-By", "Maritime");
 
     // add objects to data object

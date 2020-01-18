@@ -51,7 +51,6 @@ Router.prototype.use = function(target, ...newMiddleware) {
 
 Router.prototype.findRoute = function(path, method) {
   let routes = this.routes;
-  let matches = [];
 
   let route, match;
   for (let i = 0; i < routes.length; i++) {
@@ -59,13 +58,9 @@ Router.prototype.findRoute = function(path, method) {
     match = route.match(path);
 
     if (match) {
-      if (route.methods.length === 0 || route.methods.includes(method)) {
-        matches.push(route);
-      }
+      return route;
     }
   }
-
-  return matches;
 };
 
 Router.prototype.absorbRouter = function(...args) {
