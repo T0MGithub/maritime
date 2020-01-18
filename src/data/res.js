@@ -118,8 +118,19 @@ res.set = res.header = function(field, val) {
   return this;
 };
 
-res.sendFile = function(filePath, options = {}) {
-  send(this.req, filePath).pipe(this);
+res.sendFile = function(filePath, options = {}, callback) {
+  if (filePath === undefined) throw new Error("File path argument required.");
+
+  if (options.root) filePath = path.join(options.root, filePath);
+
+  // check absolute path provided
+  if (!path.isAbsolute(filePath)) {
+    throw new Error(
+      "Either an absolute path must be provided, or a base directory for the relative path must be provided through options.root"
+    );
+  }
+
+  send(this.req, filePath, options).pipe(this);
 };
 
 module.exports = res;
