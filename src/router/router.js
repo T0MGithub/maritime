@@ -48,13 +48,18 @@ Router.prototype.use = function(...newMiddleware) {
 Router.prototype.findRoute = function(path, method) {
   let routes = this.routes;
 
-  let route, match;
+  let route, match, methodMatch, methodIncluded;
   for (let i = 0; i < routes.length; i++) {
     route = routes[i];
-    match = route.match(path);
 
-    if (match) {
-      return route;
+    methodMatch = route.methods === method;
+    methodIncluded = Array.isArray(route.methods) && route.methods.includes(method);
+    if (methodMatch || methodIncluded) {
+      match = route.match(path);
+
+      if (match) {
+        return route;
+      }
     }
   }
 };
