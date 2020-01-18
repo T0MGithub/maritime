@@ -2,47 +2,16 @@ const http = require("http");
 const send = require("send");
 const mime = send.mime;
 const utils = require("../utils");
+const path = require("path");
 
 // build response object around standard HTTP server response object
 var res = Object.create(http.ServerResponse.prototype);
 
 res.send = function(body) {
-  var chunk = body;
-  var encoding;
-  var req = this.req;
-  var type;
-
-  // settings
-  var app = this.app;
-
-  // allow status / body
-  if (arguments.length === 2) {
-    // res.send(body, status) backwards compat
-    if (typeof arguments[0] !== "number" && typeof arguments[1] === "number") {
-      deprecate(
-        "res.send(body, status): Use res.status(status).send(body) instead"
-      );
-      this.statusCode = arguments[1];
-    } else {
-      deprecate(
-        "res.send(status, body): Use res.status(status).send(body) instead"
-      );
-      this.statusCode = arguments[0];
-      chunk = arguments[1];
-    }
-  }
-
-  // disambiguate res.send(status) and res.send(status, num)
-  if (typeof chunk === "number" && arguments.length === 1) {
-    // res.send(status) will set status message as text string
-    if (!this.get("Content-Type")) {
-      this.type("txt");
-    }
-
-    deprecate("res.send(status): Use res.sendStatus(status) instead");
-    this.statusCode = chunk;
-    chunk = statuses[chunk];
-  }
+  let chunk = body;
+  let encoding;
+  let req = this.req;
+  let type;
 
   switch (typeof chunk) {
     // string defaulting to html
@@ -77,18 +46,12 @@ res.send = function(body) {
     }
   }
 
-  // determine if ETag should be generated
-  var generateETag = !this.get("ETag") && typeof etagFn === "function";
-
   // populate Content-Length
-  var len;
+  let len;
   if (chunk !== undefined) {
     if (Buffer.isBuffer(chunk)) {
       // get length of Buffer
       len = chunk.length;
-    } else if (!generateETag && chunk.length < 1000) {
-      // just calculate length when no ETag + small chunk
-      len = Buffer.byteLength(chunk, encoding);
     } else {
       // convert chunk to Buffer and calculate
       chunk = Buffer.from(chunk, encoding);
@@ -97,14 +60,6 @@ res.send = function(body) {
     }
 
     this.set("Content-Length", len);
-  }
-
-  // populate ETag
-  var etag;
-  if (generateETag && len !== undefined) {
-    if ((etag = etagFn(chunk, encoding))) {
-      this.set("ETag", etag);
-    }
   }
 
   // freshness
@@ -133,20 +88,20 @@ res.get = function(name) {
   return this.getHeader(name);
 };
 
-res.contentType = res.type = function contentType(type) {
+res.contentType = res.type = function(type) {
   var ct = type.indexOf("/") === -1 ? mime.lookup(type) : type;
 
   return this.set("Content-Type", ct);
 };
 
-res.set = res.header = function header(field, val) {
+res.set = res.header = function(field, val) {
   if (arguments.length === 2) {
     var value = Array.isArray(val) ? val.map(String) : String(val);
 
     // add charset to content-type
     if (field.toLowerCase() === "content-type") {
       if (Array.isArray(value)) {
-        throw new TypeError("Content-Type cannot be set to an Array");
+        throw new TypeError("Content-Type cannot be set to an array.");
       }
       if (!/;\s*charset\s*=/.test(value)) {
         var charset = mime.charsets.lookup(value.split(";")[0]);
@@ -161,6 +116,10 @@ res.set = res.header = function header(field, val) {
     }
   }
   return this;
+};
+
+res.sendFile = function(filePath, options = {}) {
+  send(this.req, filePath).pipe(this);
 };
 
 module.exports = res;
