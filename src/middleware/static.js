@@ -8,7 +8,6 @@ module.exports = function(root = ".", options = {}) {
   return function(data, next) {
     if (data.req.method !== "GET" && data.req.method !== "HEAD") return next();
     if (data.res.finished) return next();
-    console.log(url.parse(data.req.url).path)
 
     data.res.sendFile(url.parse(data.req.url).path, options);
   };
