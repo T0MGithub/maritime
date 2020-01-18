@@ -4,6 +4,7 @@ const methods = require("../utils.js").nodeHttpVerbs();
 function Router(options) {
   this.options || {};
   this.routes = [];
+  this.middleware = [];
 }
 
 for (let i = 0; i < methods.length; i++) {
@@ -38,13 +39,8 @@ Router.prototype.rebaseRouter = function(routeBase) {
   return this;
 };
 
-Router.prototype.use = function(target, ...newMiddleware) {
-  if (typeof target !== "string") newMiddleware.unshift(target);
-
-  // apply passed middleware to each route on this router
-  for (let i = 0; i < this.routes.length; i++) {
-    this.routes[i].applyMiddleware(target, newMiddleware);
-  }
+Router.prototype.use = function(...newMiddleware) {
+  this.middleware = this.middleware.concat(newMiddleware);
 
   return this;
 };

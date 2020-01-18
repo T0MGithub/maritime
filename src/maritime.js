@@ -88,7 +88,13 @@ module.exports = class Maritime {
     let match;
     for (let i = 0; i < this.mountedRouters.length; i++) {
       match = this.mountedRouters[i].findRoute(path, method.toLowerCase());
-      if (match) return match;
+      if (match) {
+        let returnData = {
+          route: match,
+          router: this.mountedRouters[i]
+        };
+        return returnData;
+      }
     }
   }
 
@@ -99,12 +105,16 @@ module.exports = class Maritime {
     // match a route
     let path = data.req.url;
     let method = data.req.method;
-    const routeMatch = this.findRouteMatch(path, method);
+    const matchData = this.findRouteMatch(path, method);
 
     // compile router specific middleware
-    if (routeMatch) {
-      let routeMiddleware = middlewareCompiler(routeMatch.middleware);
-      return compiledMiddleware(data, routeMiddleware);
+    if (matchData) {
+      let routerMiddleware = matchData.router.middleware;
+      let routeMiddleware = matchData.route.middleware;
+      let extraMiddleware = routerMiddleware.concat(routeMiddleware);
+      let compiledExtra = middlewareCompiler(extraMiddleware);
+
+      return compiledMiddleware(data, compiledExtra);
     } else {
       return compiledMiddleware(data);
     }
