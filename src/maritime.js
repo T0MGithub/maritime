@@ -155,9 +155,9 @@ module.exports = class Maritime {
    * @param {Object=} [options] Server options
    * @param {String} [option.key] Key to use for HTTPS server, can be key data or file to load
    * @param {String} [option.cert] Cert to use for HTTPS server, can be key data or file to load
-   * @param {Number} [options.hostname] Specifies the IP address we want to listen to
+   * @param {String} [options.hostname] Specifies the IP address we want to listen to
    * @param {Number} [options.backlog] Specifies the max length of the queue of pending connections
-   * @param {Object=} [callback] Callback to run after server is created
+   * @param {Function=} [callback] Callback to run after server is created
    * 
    * @returns HTTP/HTTPS server
    */
