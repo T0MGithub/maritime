@@ -21,18 +21,19 @@ Maritime aims to be a complete web framework experience, and equip developers wi
 
 #### One-Command HTTP Server
 
-One command HTTP server indicates whether a framework has a command to start a HTTP server, for example ``app.listen(3000)`` in Maritime.
+One command HTTP server indicates whether a framework has a command to start a HTTP server, for example `app.listen(3000)` in Maritime.
 
 #### One-Command HTTPS Server
 
-One command HTTPS server indicates whether a framework has a command to start a NodeJS HTTPS server. In Maritime, 
-a HTTPS server can be started through ``app.listen()``.
+One command HTTPS server indicates whether a framework has a command to start a NodeJS HTTPS server. In Maritime,
+a HTTPS server can be started through `app.listen()`.
+
 ```js
 app.listen(3000, {
   https: true,
   key: privatekey.pem,
   cert: certificate.pem
-})
+});
 ```
 
 #### HTTP Helper Methods
@@ -45,4 +46,4 @@ Context style indicates how data is passed to each middleware, either through a 
 
 #### Response Style
 
-Response Style indicates how each web framework is designed to reply to requests. Immediate commands mean methods on the response object can be invoked to immediately respond to each request, end of middleware indicates a response is sent at the end of all middleware using data set in the middleware, HTTP Methods mean only bare-bones HTTP methods can be used to reply to each request. 
+Response Style indicates how each web framework is designed to reply to requests. Immediate commands mean methods on the response object can be invoked to immediately respond to each request, end of middleware indicates a response is sent at the end of all middleware using data set in the middleware, HTTP Methods mean only bare-bones HTTP methods can be used to reply to each request.
