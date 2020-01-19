@@ -23,7 +23,7 @@ utils.addGetter(req, "query", function() {
 utils.addGetter(req, "host", function() {
   let host = this.app.proxy && this.get("X-Forwarded-Host");
   if (!host) {
-    if (this.req.httpVersionMajor >= 2) host = this.get(":authority");
+    if (this.httpVersionMajor >= 2) host = this.get(":authority");
     if (!host) host = this.get("Host");
   }
   if (!host) return "";
