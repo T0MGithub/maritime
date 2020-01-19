@@ -37,7 +37,7 @@ app.listen(3000, {
 
 #### HTTP Helper Methods
 
-HTTP help methods indicates whether additional functions are included with each request to assist with responding to each request.
+HTTP help methods indicates whether additional functions are included with each request to assist with responding to that request.
 
 #### Context Style
 
