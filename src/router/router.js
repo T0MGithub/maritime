@@ -65,7 +65,7 @@ Router.prototype.findRoute = function(path, method) {
   }
 };
 
-Router.prototype.absorbRouter = function(...args) {
+Router.prototype.absorbRouter = Router.prototype.absorb = function(...args) {
   var baseRoute, middleware, router;
   // if first argument is a string, a route should be applied to absorbed router
   if (typeof args[0] == "string") {
