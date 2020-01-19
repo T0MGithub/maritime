@@ -19,6 +19,7 @@ module.exports = class Maritime {
 
     this.env = options.env || process.env.NODE_ENV || "development";
     this.settings = {};
+    if (options.keys) this.keys = options.keys;
 
     this.set("x-powered-by", true);
   }
@@ -146,6 +147,7 @@ module.exports = class Maritime {
     // add objects to data object
     data.req = request;
     data.res = response;
+    data.app = this;
 
     return data;
   }
@@ -158,12 +160,12 @@ module.exports = class Maritime {
    * @param {String} [options.hostname] Specifies the IP address we want to listen to
    * @param {Number} [options.backlog] Specifies the max length of the queue of pending connections
    * @param {Function=} [callback] Callback to run after server is created
-   * 
+   *
    * @returns HTTP/HTTPS server
    */
   listen(...args) {
     let port, options, callback;
-    if (typeof args[1] == 'function') {
+    if (typeof args[1] == "function") {
       port = args[0];
       callback = args[1];
       options = {};
@@ -173,13 +175,13 @@ module.exports = class Maritime {
       callback = args[2];
     }
 
-    const secureServer = (options.https === true);
+    const secureServer = options.https === true;
 
     const checkToLoad = function(data) {
       if (!data) return data;
-      if (data.includes('.pem')) return fs.readFileSync(data);
+      if (data.includes(".pem")) return fs.readFileSync(data);
       return data;
-    }
+    };
 
     let serverObj;
     if (secureServer) {

@@ -24,6 +24,7 @@
   "dependencies": {
     "co-body": "^6.0.0",
     "content-type": "^1.0.4",
+    "cookies": "^0.8.0",
     "copy-to": "^2.0.1",
     "path-to-regexp": "^6.1.0",
     "send": "^0.17.1",
