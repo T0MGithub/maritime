@@ -31,7 +31,7 @@ utils.addGetter(req, "host", function() {
 });
 
 utils.addGetter(req, "secure", function() {
-  return req.protocol === "https";
+  return this.protocol === "https";
 });
 
 utils.addGetter(req, "protocol", function() {
