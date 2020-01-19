@@ -109,26 +109,29 @@ module.exports = class Maritime {
 
   handleRequest(data) {
     // compile global middleware
-    const compiledMiddleware = middlewareCompiler(this.globalMiddleware);
+    const globalMiddleware = middlewareCompiler(this.globalMiddleware);
 
-    // match a route
-    let path = data.req.strippedPath;
-    let method = data.req.method;
-    const matchData = this.findRouteMatch(path, method);
+    const executeRouteFuncs = function(data) {
+      // match a route
+      let path = data.req.strippedPath;
+      let method = data.req.method;
+      const matchData = this.findRouteMatch(path, method);
 
-    // compile router specific middleware
-    if (matchData) {
-      data.req.params = matchData.route.matchParameters(data.req.strippedPath);
+      // compile router specific middleware
+      if (matchData) {
+        data.req.params = matchData.route.matchParameters(path);
 
-      let routerMiddleware = matchData.router.middleware;
-      let routeMiddleware = matchData.route.middleware;
-      let extraMiddleware = routerMiddleware.concat(routeMiddleware);
-      let compiledExtra = middlewareCompiler(extraMiddleware);
+        let routerMiddleware = middlewareCompiler(matchData.router.middleware);
+        const runRouteFuncs = function(data) {
+          let routeMiddleware = middlewareCompiler(matchData.route.middleware);
+          routeMiddleware(data);
+        }.bind(this);
 
-      return compiledMiddleware(data, compiledExtra);
-    } else {
-      return compiledMiddleware(data);
-    }
+        routerMiddleware(data, runRouteFuncs);
+      }
+    }.bind(this);
+
+    globalMiddleware(data, executeRouteFuncs);
   }
 
   constructData(req, res) {
