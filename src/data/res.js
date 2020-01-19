@@ -7,6 +7,20 @@ const path = require("path");
 // build response object around standard HTTP server response object
 var res = Object.create(http.ServerResponse.prototype);
 
+res.json = function json(obj) {
+  let escape = this.app.get('json escape')
+  let replacer = this.app.get('json replacer');
+  let spaces = this.app.get('json spaces');
+  let body = JSON.stringify(obj, replacer, spaces, escape)
+
+  // set content-type to JSON
+  if (!this.get('Content-Type')) {
+    this.set('Content-Type', 'application/json');
+  }
+
+  return this.send(body);
+};
+
 res.send = function(body) {
   let chunk = body;
   let encoding;
@@ -87,7 +101,6 @@ res.get = function(name) {
 
 res.contentType = res.type = function(type) {
   var ct = type.indexOf("/") === -1 ? mime.lookup(type) : type;
-
   return this.set("Content-Type", ct);
 };
 

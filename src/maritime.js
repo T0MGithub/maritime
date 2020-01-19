@@ -20,6 +20,8 @@ module.exports = class Maritime {
     this.env = options.env || process.env.NODE_ENV || "development";
     this.settings = {};
     if (options.keys) this.keys = options.keys;
+    this.proxy = options.proxy || false;
+    this.proxyHeader = options.proxyHeader || "X-Forwarded-For";
 
     this.set("x-powered-by", true);
   }
