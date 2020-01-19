@@ -37,3 +37,29 @@ module.exports.ejs = class EJSRenderingEngine {
     return toReturn;
   }
 };
+
+module.exports.pug = class PugRenderingEngine {
+  constructor(options = {}) {
+    try {
+      this.engine = require("pug");
+    } catch {
+      throw new Error("To use the Pug engine, Pug must be installed.");
+    }
+
+    this.views = options.views || __dirname;
+
+    this.globalRenderOptions = {};
+  }
+
+  render(templatePath, renderData = {}, renderOptions = {}) {
+    if (typeof templatePath !== "string")
+      throw new Error("Path must be a string.");
+
+    // setup options object, with specific render options taking
+    // priority in the Object.assign merge (passed second)
+    let options = Object.assign(this.globalRenderOptions, renderOptions);
+
+    const compiledFunction = this.engine.compileFile(templatePath, options);
+    return compiledFunction(renderData);
+  }
+};
