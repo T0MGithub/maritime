@@ -33,6 +33,9 @@ module.exports = class Maritime {
   }
 
   use(middleware) {
+    if (typeof middleware !== "function")
+      throw new Error("Middleware provided with .use() must be a function.");
+
     this.globalMiddleware.push(middleware);
   }
 

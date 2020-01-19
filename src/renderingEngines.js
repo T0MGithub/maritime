@@ -85,7 +85,7 @@ module.exports.handlebars = class HandlebarsRenderingEngine {
   render(templatePath, renderData = {}, renderOptions = {}) {
     // resolve full path
     let fullPath = path.resolve(this.views, templatePath);
-    
+
     // load template data
     const template = fs.readFileSync(fullPath, "utf8");
 
