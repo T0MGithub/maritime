@@ -131,7 +131,7 @@ res.redirect = function(url, altName) {
 };
 
 res.render = function(...args) {
-  const engine = this.app.get("render-engine");
+  const engine = this.app.get("rendering-engine");
 
   if (engine === undefined) throw new Error("No engine added to Maritime.");
 
