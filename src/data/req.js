@@ -9,4 +9,8 @@ utils.addGetter(req, "query", function() {
   return url.parse(this.url, true).query;
 });
 
+utils.addGetter(req, "secure", function() {
+  return req.protocol === 'https';
+});
+
 module.exports = req;
