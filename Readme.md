@@ -1,6 +1,6 @@
 ![Maritime NodeJS Web Framework Logo](https://i.imgur.com/psmyh0O.png)
 
-A new NodeJS web framework - merging the best syntax of frameworks for a fast, modern experience.
+A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. [Learn why you should start using Maritime today.](/docs/why-use-maritime.md)
 
 [![Maritime NPM Version](https://img.shields.io/npm/v/maritime?color=blue)](https://npmjs.org/package/maritime)
 [![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
