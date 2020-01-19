@@ -5,7 +5,7 @@ module.exports = {
     if (!this.cookieObj) {
       this.cookieObj = new Cookies(this.req, this.res, {
         keys: this.app.keys,
-        secure: false
+        secure: this.req.secure
       });
     }
     return this.cookieObj;
