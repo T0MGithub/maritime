@@ -10,7 +10,7 @@ utils.addGetter(req, "query", function() {
 });
 
 utils.addGetter(req, "secure", function() {
-  return req.protocol === 'https';
+  return req.protocol === "https";
 });
 
 module.exports = req;
