@@ -8,14 +8,14 @@ const path = require("path");
 var res = Object.create(http.ServerResponse.prototype);
 
 res.json = function json(obj) {
-  let escape = this.app.get('json escape')
-  let replacer = this.app.get('json replacer');
-  let spaces = this.app.get('json spaces');
-  let body = JSON.stringify(obj, replacer, spaces, escape)
+  let escape = this.app.get("json escape");
+  let replacer = this.app.get("json replacer");
+  let spaces = this.app.get("json spaces");
+  let body = JSON.stringify(obj, replacer, spaces, escape);
 
   // set content-type to JSON
-  if (!this.get('Content-Type')) {
-    this.set('Content-Type', 'application/json');
+  if (!this.get("Content-Type")) {
+    this.set("Content-Type", "application/json");
   }
 
   return this.send(body);

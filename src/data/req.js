@@ -20,6 +20,16 @@ utils.addGetter(req, "query", function() {
   return url.parse(this.url, true).query;
 });
 
+utils.addGetter(req, "host", function() {
+  let host = this.app.proxy && this.get("X-Forwarded-Host");
+  if (!host) {
+    if (this.req.httpVersionMajor >= 2) host = this.get(":authority");
+    if (!host) host = this.get("Host");
+  }
+  if (!host) return "";
+  return host.split(/\s*,\s*/, 1)[0];
+});
+
 utils.addGetter(req, "secure", function() {
   return req.protocol === "https";
 });
