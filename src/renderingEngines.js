@@ -56,11 +56,13 @@ module.exports.pug = class PugRenderingEngine {
     if (typeof templatePath !== "string")
       throw new Error("Path must be a string.");
 
+    let fullPath = path.resolve(this.views, templatePath);
+
     // setup options object, with specific render options taking
     // priority in the Object.assign merge (passed second)
     let options = Object.assign(this.globalRenderOptions, renderOptions);
 
-    const compiledFunction = this.engine.compileFile(templatePath, options);
+    const compiledFunction = this.engine.compileFile(fullPath, options);
     return compiledFunction(renderData);
   }
 };
