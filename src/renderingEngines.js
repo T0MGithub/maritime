@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 
 module.exports.ejs = class EJSRenderingEngine {
   constructor(options = {}) {
@@ -61,5 +62,32 @@ module.exports.pug = class PugRenderingEngine {
 
     const compiledFunction = this.engine.compileFile(templatePath, options);
     return compiledFunction(renderData);
+  }
+};
+
+module.exports.handlebars = class HandlebarsRenderingEngine {
+  constructor(options = {}) {
+    try {
+      this.engine = require("handlebars");
+    } catch {
+      throw new Error(
+        "To use the Handlebars engine, Handlebars must be installed."
+      );
+    }
+
+    this.views = options.views || __dirname;
+
+    this.globalRenderOptions = {};
+  }
+
+  render(templatePath, renderData = {}, renderOptions = {}) {
+    // resolve full path
+    let fullPath = path.resolve(this.views, templatePath);
+    
+    // load template data
+    const template = fs.readFileSync(fullPath, "utf8");
+
+    const compiled = this.engine.compile(template);
+    return compiled(renderData);
   }
 };
