@@ -143,6 +143,17 @@ res.redirect = function(url, altName) {
   this.send("Redirecting you.");
 };
 
+res.status = function(statusCode) {
+  this.statusCode = statusCode;
+  return this;
+};
+
+res.sendStatus = function(statusCode) {
+  this.status(statusCode);
+  this.type("text");
+  return this.send(statusCode);
+};
+
 res.render = function(...args) {
   const engine = this.app.get("rendering-engine");
 
