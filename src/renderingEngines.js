@@ -20,7 +20,7 @@ class EJSRenderingEngine {
   constructor(options = {}) {
     try {
       this.engine = require("ejs");
-    } catch {
+    } catch (error) {
       throw new Error("To use the EJS engine, EJS must be installed.");
     }
 
@@ -59,7 +59,7 @@ class PugRenderingEngine {
   constructor(options = {}) {
     try {
       this.engine = require("pug");
-    } catch {
+    } catch (error) {
       throw new Error("To use the Pug engine, Pug must be installed.");
     }
 
@@ -88,7 +88,7 @@ class HandlebarsRenderingEngine {
   constructor(options = {}) {
     try {
       this.engine = require("handlebars");
-    } catch {
+    } catch (error) {
       throw new Error(
         "To use the Handlebars engine, Handlebars must be installed."
       );
