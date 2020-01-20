@@ -1,6 +1,21 @@
 const path = require("path");
 const fs = require("fs");
 
+module.exports = function(engine = "ejs", options) {
+  switch (engine) {
+    case "ejs":
+      return new EJSRenderingEngine(options);
+    case "handlebars":
+      return new HandlebarsRenderingEngine(options);
+    case "pug":
+      return new PugRenderingEngine(options);
+    default:
+      throw new Error(
+        "Provided engine is not a Maritime integrated rendering engine. You can use a custom engine instead."
+      );
+  }
+};
+
 class EJSRenderingEngine {
   constructor(options = {}) {
     try {
@@ -37,7 +52,7 @@ class EJSRenderingEngine {
 
     return toReturn;
   }
-};
+}
 module.exports.ejs = EJSRenderingEngine;
 
 class PugRenderingEngine {
@@ -66,7 +81,7 @@ class PugRenderingEngine {
     const compiledFunction = this.engine.compileFile(fullPath, options);
     return compiledFunction(renderData);
   }
-};
+}
 module.exports.pug = PugRenderingEngine;
 
 class HandlebarsRenderingEngine {
@@ -94,5 +109,5 @@ class HandlebarsRenderingEngine {
     const compiled = this.engine.compile(template);
     return compiled(renderData);
   }
-};
+}
 module.exports.handlebars = HandlebarsRenderingEngine;
