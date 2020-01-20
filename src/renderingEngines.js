@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-module.exports.ejs = class EJSRenderingEngine {
+class EJSRenderingEngine {
   constructor(options = {}) {
     try {
       this.engine = require("ejs");
@@ -38,8 +38,9 @@ module.exports.ejs = class EJSRenderingEngine {
     return toReturn;
   }
 };
+module.exports.ejs = EJSRenderingEngine;
 
-module.exports.pug = class PugRenderingEngine {
+class PugRenderingEngine {
   constructor(options = {}) {
     try {
       this.engine = require("pug");
@@ -66,8 +67,9 @@ module.exports.pug = class PugRenderingEngine {
     return compiledFunction(renderData);
   }
 };
+module.exports.pug = PugRenderingEngine;
 
-module.exports.handlebars = class HandlebarsRenderingEngine {
+class HandlebarsRenderingEngine {
   constructor(options = {}) {
     try {
       this.engine = require("handlebars");
@@ -93,3 +95,4 @@ module.exports.handlebars = class HandlebarsRenderingEngine {
     return compiled(renderData);
   }
 };
+module.exports.handlebars = HandlebarsRenderingEngine;
