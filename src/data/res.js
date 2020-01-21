@@ -156,7 +156,6 @@ res.sendStatus = function(statusCode) {
 
 res.render = function(...args) {
   const engine = this.app.get("rendering-engine");
-
   if (engine === undefined) throw new Error("No engine added to Maritime.");
 
   const rendered = engine.render(...args);

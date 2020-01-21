@@ -11,7 +11,7 @@ module.exports = function(engine = "ejs", options) {
       return new PugRenderingEngine(options);
     default:
       throw new Error(
-        "Provided engine is not a Maritime integrated rendering engine. You can use a custom engine instead."
+        "Provided engine doesn't have a Maritime integrated wrapper. You can use a custom engine wrapper instead."
       );
   }
 };
@@ -24,7 +24,9 @@ class EJSRenderingEngine {
       throw new Error("To use the EJS engine, EJS must be installed.");
     }
 
-    this.views = options.views || __dirname;
+    if (options.views === undefined)
+      throw new Error("options.views must be provided as an argument.");
+    this.views = options.views;
 
     this.globalRenderOptions = {};
     this.globalRenderOptions.cache = options.cache || false;
@@ -63,7 +65,9 @@ class PugRenderingEngine {
       throw new Error("To use the Pug engine, Pug must be installed.");
     }
 
-    this.views = options.views || __dirname;
+    if (options.views === undefined)
+      throw new Error("options.views must be provided as an argument.");
+    this.views = options.views;
 
     this.globalRenderOptions = {};
   }
@@ -94,7 +98,9 @@ class HandlebarsRenderingEngine {
       );
     }
 
-    this.views = options.views || __dirname;
+    if (options.views === undefined)
+      throw new Error("options.views must be provided as an argument.");
+    this.views = options.views;
 
     this.globalRenderOptions = {};
   }
