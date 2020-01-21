@@ -1,3 +1,17 @@
+# 0.0.3 - 21/01/2020
+
+### Added
+
+- `res.status(status)` function to set the status of the response.
+- `res.sendStatus(status)` function to set a status and send a body with the relevant status code to the client.
+- Added set method for cookies object in data, so `data.cookies = val` successfully overwrites relevant object.
+- Added construction function for rendering engines - `Maritime.renderingEngines(engine, options)` can be used to construct the appropriate engine.
+
+### Changed
+
+- Rendering engines now require `options.views` argument.
+- Routing wildcards can now be placed anywhere in routes.
+
 # 0.0.2 - 19/01/2020
 
 ### Added
