@@ -2,41 +2,13 @@ const { pathToRegexp, match, parse, compile } = require("path-to-regexp");
 
 /**
  * Convert wildcards in the route into path-to-regexp required syntax, "(.*)".
- * Only asteriks that represents wildcards should be converted, not ones
- * part of a route name/parameter or part of other syntax. Therefore, this
- * function only converts wildcards with the start of the string or a "/" on one
- * side and the end of the string or a "/" on the other side.
- *
- * e.g.
- *
- * '(.*)' ---> '(.*)'
- * '/test*' ---> '/test*'
- * '/*test'/ ---> '/*test'
- *
- * '/*' ---> '/(.*)'
- * '/test/*' ---> '/test/(.*)'
- * '*' ---> '(.*)'
  *
  * @param {string} path
  * @return {string} path with converted wildcards
  */
 
 const convertWildcards = function(path) {
-  let char;
-  for (let i = 0; i < path.length; i++) {
-    char = path[i];
-    if (char === "*") {
-      if (
-        (path[i + 1] == "/" || i === path.length - 1) &&
-        (path[i - 1] == "/" || i === 0)
-      ) {
-        path = path.substring(0, i) + "(.*)" + path.substring(i + 1);
-        i += 4;
-      }
-    }
-  }
-
-  return path;
+  return path.replace("*", "(.*)");
 };
 
 function Route(methods, path, middleware, options) {
