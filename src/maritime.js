@@ -23,7 +23,8 @@ module.exports = class Maritime {
     this.proxy = options.proxy || false;
     this.proxyHeader = options.proxyHeader || "X-Forwarded-For";
 
-    this.set("x-powered-by", true);
+    // don't enable x-powered-by header in production mode for security
+    this.set("x-powered-by", this.env !== "production");
   }
 
   set(setting, val) {
