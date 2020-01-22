@@ -2,7 +2,6 @@ const http = require("http");
 const send = require("send");
 const mime = send.mime;
 const utils = require("../utils");
-const path = require("path");
 
 // build response object around standard HTTP server response object
 var res = Object.create(http.ServerResponse.prototype);

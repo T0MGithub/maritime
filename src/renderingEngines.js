@@ -8,6 +8,7 @@ module.exports = function(engine = "ejs", options) {
     case "handlebars":
       return new HandlebarsRenderingEngine(options);
     case "pug":
+    case "jade":  
       return new PugRenderingEngine(options);
     default:
       throw new Error(
@@ -86,7 +87,7 @@ class PugRenderingEngine {
     return compiledFunction(renderData);
   }
 }
-module.exports.pug = PugRenderingEngine;
+module.exports.pug = module.exports.jade = PugRenderingEngine;
 
 class HandlebarsRenderingEngine {
   constructor(options = {}) {
