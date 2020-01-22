@@ -5,6 +5,7 @@
 - Added Jade alias for Pug rendering engine, for example in ``Maritine.renderingEngine("pug")``.
 - Added ``data.res.download(filePath)`` to make a client download a file.
 - Added getters and setters for ``data.res.status`` so you can now set a status like ``data.res.status = 404`` or get the status like ``data.res.status``.
+- ``data.res.send()`` default parameter of an empty string.
 
 ### Changed
 
