@@ -1,3 +1,19 @@
+# 0.1.0 - 22/01/2020
+
+### Added
+
+- Added Jade alias for Pug rendering engine, for example in ``Maritine.renderingEngine("pug")``.
+- Added ``data.res.download(filePath)`` to make a client download a file.
+- Added getters and setters for ``data.res.status`` so you can now set a status like ``data.res.status = 404`` or get the status like ``data.res.status``.
+
+### Changed
+
+- ``X-Powered-By`` header is disabled by default in production mode for security.
+
+### Fixed
+
+- Fixed errors when using regexp for routing paths.
+
 # 0.0.3 - 21/01/2020
 
 ### Added
