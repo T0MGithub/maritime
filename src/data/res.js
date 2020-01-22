@@ -21,7 +21,7 @@ res.json = function json(obj) {
   return this.send(body);
 };
 
-res.send = function(body) {
+res.send = function(body = "") {
   let chunk = body;
   let encoding;
   let req = this.req;
