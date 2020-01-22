@@ -2,9 +2,20 @@ const http = require("http");
 const send = require("send");
 const mime = send.mime;
 const utils = require("../utils");
+const path = require("path");
 
 // build response object around standard HTTP server response object
 var res = Object.create(http.ServerResponse.prototype);
+
+res.download = function(filePath) {
+  const fileName = path.basename(filePath);
+  const fileType = send.mime.lookup(filePath);
+  
+  this.set('Content-disposition', `attachment; filename=${ fileName }`);
+  this.set('Content-type', fileType);
+
+  this.send(filePath);
+};
 
 res.json = function json(obj) {
   let escape = this.app.get("json escape");
