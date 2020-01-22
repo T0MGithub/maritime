@@ -1,4 +1,4 @@
-const Maritime = require("./index.js");
+const Maritime = require("maritime");
 const app = new Maritime();
 const router = new Maritime.router();
 
