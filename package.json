@@ -5,6 +5,7 @@
   "main": "index.js",
   "repository": "t0mgithub/maritime",
   "homepage": "https://github.com/t0mgithub/maritime#readme",
+  "runkitExampleFilename": "example.js",
   "scripts": {
     "format": "prettier --write {**,**/**}/*.{js,md}",
     "lint": "eslint .",
