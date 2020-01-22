@@ -37,6 +37,14 @@ module.exports.addGetter = function(object, name, getterFunction) {
   });
 };
 
+module.exports.addSetter = function(object, name, setterFunction) {
+  Object.defineProperty(object, name, {
+    set: setterFunction,
+    configurable: true,
+    enumerable: true
+  });
+}
+
 module.exports.setCharset = function setCharset(type, charset) {
   if (!type || !charset) {
     return type;
