@@ -8,7 +8,7 @@ module.exports = function(engine = "ejs", options) {
     case "handlebars":
       return new HandlebarsRenderingEngine(options);
     case "pug":
-    case "jade":  
+    case "jade":
       return new PugRenderingEngine(options);
     default:
       throw new Error(

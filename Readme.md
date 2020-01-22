@@ -6,6 +6,7 @@ A new type of NodeJS web framework - providing a clean, full-toolkit to develop 
 [![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 ![powered by javascript badge](https://img.shields.io/badge/powered%20by-javascript-red)
 ![Maritime Development Badge](https://img.shields.io/badge/development-ongoing-brightgreen)
+[![Try maritime on RunKit](https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen)](https://npm.runkit.com/maritime)
 
 ```js
 const Maritime = require("maritime");
@@ -29,7 +30,7 @@ app.listen(3000);
 Maritime requires Node v7.6.0 or higher for async and promise functionality.
 
 ```
-$ npm i maritime --save
+$ npm i maritime
 ```
 
 ## Credit
