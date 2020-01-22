@@ -10,9 +10,9 @@ var res = Object.create(http.ServerResponse.prototype);
 res.download = function(filePath) {
   const fileName = path.basename(filePath);
   const fileType = send.mime.lookup(filePath);
-  
-  this.set('Content-disposition', `attachment; filename=${ fileName }`);
-  this.set('Content-type', fileType);
+
+  this.set("Content-disposition", `attachment; filename=${fileName}`);
+  this.set("Content-type", fileType);
 
   this.send(filePath);
 };
