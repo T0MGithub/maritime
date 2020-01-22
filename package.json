@@ -1,6 +1,6 @@
 {
   "name": "maritime",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS.",
   "main": "index.js",
   "repository": "t0mgithub/maritime",

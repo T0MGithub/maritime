@@ -14,7 +14,7 @@ res.download = function(filePath) {
   this.set("Content-disposition", `attachment; filename=${fileName}`);
   this.set("Content-type", fileType);
 
-  this.send(filePath);
+  this.sendFile(filePath);
 };
 
 res.json = function json(obj) {
