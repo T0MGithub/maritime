@@ -43,7 +43,7 @@ module.exports.addSetter = function(object, name, setterFunction) {
     configurable: true,
     enumerable: true
   });
-}
+};
 
 module.exports.setCharset = function setCharset(type, charset) {
   if (!type || !charset) {

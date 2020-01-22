@@ -148,6 +148,15 @@ res.status = function(statusCode) {
   return this;
 };
 
+utils.addSetter(res, "status", function(newStatus) {
+  this.statusCode = newStatus;
+  return this;
+});
+
+utils.addGetter(res, "status", function() {
+  return this.statusCode;
+});
+
 res.sendStatus = function(statusCode) {
   this.status(statusCode);
   this.type("text");
