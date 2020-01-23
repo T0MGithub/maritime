@@ -141,6 +141,16 @@ res.set = res.header = function(field, val) {
 res.sendFile = function(filePath, options = {}) {
   if (filePath === undefined) throw new Error("File path argument required.");
 
+  let isAbsolutePath = path.isAbsolute(filePath);
+  let staticAppValue = this.app.get("static-folder");
+
+  if (!isAbsolutePath && staticAppValue === undefined)
+    throw new Error(
+      "You must either provide a absolute path or set a static base folder using app.set('static-folder', path)."
+    );
+
+  if (!isAbsolutePath) filePath = path.resolve(staticAppValue, filePath);
+
   send(this.req, filePath, options).pipe(this);
 };
 
