@@ -24,6 +24,14 @@
     "application",
     "middleware"
   ],
+  "files": [
+    "LICENSE",
+    "Changelog.md",
+    "Readme.md",
+    "index.js",
+    "src/",
+    "example.js"
+  ],
   "dependencies": {
     "co-body": "^6.0.0",
     "content-type": "^1.0.4",
