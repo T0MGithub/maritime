@@ -1,3 +1,9 @@
+# 0.1.2 - 23/01/2020
+
+### Fixed
+
+- Fixed file lookup with ``data.res.sendFile()`` and ``data.res.download()`` - either an absolute file path must be provided or a base directory must be set using ``app.set("static-folder", file)``, to avoid relative path lookup confusion.
+
 # 0.1.1 - 22/01/2020
 
 ### Fixed
