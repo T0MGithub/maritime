@@ -20,7 +20,12 @@ Route.prototype.match = function(path) {
   }
 
   // create parameters
-  this.params = this.engine.createParams({ match, keys: this.keys, path });
+  this.params = this.engine.createParams({
+    match,
+    keys: this.keys,
+    path,
+    route: this.path
+  });
 
   return true;
 };
