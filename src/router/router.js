@@ -46,11 +46,11 @@ Router.prototype.use = function(...newMiddleware) {
 };
 
 Router.prototype.applyRoutingEngine = function(engine) {
-  for (let i=0; i < this.routes.length; i++) {
+  for (let i = 0; i < this.routes.length; i++) {
     this.routes[i].engine = engine;
     this.routes[i].engine.createRegex();
   }
-}
+};
 
 Router.prototype.findRoute = function(path, method) {
   let routes = this.routes;

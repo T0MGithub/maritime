@@ -78,6 +78,10 @@ module.exports = class Maritime {
       router.use(undefined, middleware);
     }
 
+    // if routing engine added to app, apply it to the router
+    let routingEngine = this.get("routing-engine");
+    if (routingEngine) router.applyRoutingEngine(routingEngine);
+
     // mount router
     this.mountedRouters.push(router);
   }

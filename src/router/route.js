@@ -12,7 +12,6 @@ function Route(methods, path, middleware, options) {
 }
 
 Route.prototype.match = function(path) {
-  console.log(path, this.regex);
   const match = this.regex.exec(path);
 
   if (!match) {
