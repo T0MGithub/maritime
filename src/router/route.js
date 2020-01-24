@@ -1,4 +1,4 @@
-const standardEngine = require("./standard.js");
+const standardEngine = require("maritime-standard-routing");
 
 function Route(methods, path, middleware, options) {
   this.methods = methods;
