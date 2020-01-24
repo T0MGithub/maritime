@@ -2,29 +2,33 @@ const Route = require("./route.js");
 const methods = require("../utils.js").nodeHttpVerbs();
 
 function Router(options) {
-  this.options || {};
+  this.options = options || {};
   this.routes = [];
   this.middleware = [];
+  this.routingEngine = this.options.engine;
 }
 
 for (let i = 0; i < methods.length; i++) {
   let method = methods[i];
   Router.prototype[method] = function(path, ...middleware) {
-    this.addRoute([method], path, middleware);
+    let options = {
+      engine: this.routingEngine
+    };
+    this.addRoute([method], path, middleware, options);
     return this;
   };
 }
 
-Router.prototype.addRoute = function(path, methods, middleware) {
+Router.prototype.addRoute = function(path, methods, middleware, options) {
   // if multiple paths provided, run this function on each path
   if (Array.isArray(path)) {
     for (let i = 0; i < path.length; i++) {
-      this.addRoute.call(this, path[i], methods, middleware);
+      this.addRoute.call(this, path[i], methods, middleware, options);
     }
     return this;
   }
 
-  let newRoute = new Route(path, methods, middleware);
+  let newRoute = new Route(path, methods, middleware, options);
 
   this.routes.push(newRoute);
 
