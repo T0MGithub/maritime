@@ -19,8 +19,8 @@ Route.prototype.match = function(path) {
     return false;
   }
 
-  // store values
-  this.params = this.engine.createParams(match, this.keys);
+  // create parameters
+  this.params = this.engine.createParams({ match, keys: this.keys, path });
 
   return true;
 };
