@@ -120,7 +120,7 @@ module.exports = class Maritime {
 
       // compile router specific middleware
       if (matchData) {
-        data.req.params = matchData.route.matchParameters(path);
+        data.req.params = matchData.route.params;
 
         let routerMiddleware = middlewareCompiler(matchData.router.middleware);
         const runRouteFuncs = function(data) {

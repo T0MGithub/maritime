@@ -1,49 +1,45 @@
-const { pathToRegexp, match, parse, compile } = require("path-to-regexp");
-
-/**
- * Convert wildcards in the route into path-to-regexp required syntax, "(.*)".
- *
- * @param {string} path
- * @return {string} path with converted wildcards
- */
-
-const convertWildcards = function(path) {
-  return path.replace("*", "(.*)");
-};
+const standardEngine = require("./standard.js");
 
 function Route(methods, path, middleware, options) {
   this.methods = methods;
-  if (typeof path === "string" && typeof path === "string")
-    path = convertWildcards(path);
   this.path = path;
   this.middleware = middleware;
   this.options = options || {};
-  this.parameters = [];
+  this.keys = [];
+  this.engine = this.options.engine || standardEngine;
 
-  this.regex = pathToRegexp(this.path, this.parameters, this.options);
+  this.createRegex();
 }
 
 Route.prototype.match = function(path) {
-  return this.regex.test(path);
+  console.log(path, this.regex);
+  const match = this.regex.exec(path);
+
+  if (!match) {
+    this.params = undefined;
+    return false;
+  }
+
+  // store values
+  this.params = this.engine.createParams(match, this.keys);
+
+  return true;
+};
+
+Route.prototype.createRegex = function(path) {
+  if (!path) path = this.path;
+  let { regex, keys } = this.engine.toRegex(this.path, [], this.options);
+  this.regex = regex;
+  this.keys = keys;
 };
 
 Route.prototype.rebaseRoute = function(routeBase) {
   if (this.path) {
     this.path = routeBase + this.path;
-    if (typeof path === "string" && this.path.indexOf("*") !== -1)
-      this.path = convertWildcards(this.path);
-
-    this.parameters = [];
-    this.regex = pathToRegexp(this.path, this.parameters, this.options);
+    this.regex = this.createRegex();
   }
 
   return this;
-};
-
-Route.prototype.matchParameters = function(url) {
-  const matchParameters = match(this.path, { decode: decodeURIComponent });
-  if (matchParameters === false) return {};
-  return matchParameters(url).params;
 };
 
 module.exports = Route;
