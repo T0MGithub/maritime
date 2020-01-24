@@ -16,7 +16,10 @@ module.exports.createParams = function(match, keys) {
     let prop = key.name;
     let val = decodeURIComponent(match[i]);
 
-    if (val !== undefined || !Object.prototype.hasOwnProperty.call(params, prop)) {
+    if (
+      val !== undefined ||
+      !Object.prototype.hasOwnProperty.call(params, prop)
+    ) {
       params[prop] = val;
     }
   }
