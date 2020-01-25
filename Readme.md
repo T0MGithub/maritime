@@ -31,9 +31,9 @@ app.listen(3000);
 - ✨ [Dynamic routing engines](./docs/routing-engines.md). Use different routing engines to support the route syntax you want.
 - 🔥 View engines - supports rendering templates of multiple types including EJS, Pug and Handlebars.
 - ⚡️ Modern, semantic asynchronous middleware.
-- 🔧 HTTP helper methods to assist you with common HTTP tasks such as redirects, sending data and downloading files to the client.
+- 🔧 HTTP helper methods - helper methods are included to assist you with common HTTP tasks such as redirects, sending data and downloading files to the client.
 - 📕 Extensive, in-built middleware such as a body parser, static file server, method override and a cookie parser to help you get your app off the ground even faster.
-- 🔒 One-command HTTPS server. Quickly and easily create HTTPS servers through `app.listen()`.
+- 🔒 [One-command HTTPS server](./docs/https-secure-server.md). Quickly and easily create HTTPS servers through `app.listen()`.
 
 ## Installation
 
