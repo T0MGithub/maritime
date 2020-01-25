@@ -1,46 +1,39 @@
-const standardEngine = require("maritime-standard-routing");
+const Standardengine = require("maritime-standard-routing");
 
 function Route(methods, path, middleware, options) {
   this.methods = methods;
   this.path = path;
   this.middleware = middleware;
   this.options = options || {};
-  this.keys = [];
-  this.engine = this.options.engine || standardEngine;
+  let Engine = this.options.engine || Standardengine;
+  this.engine = new Engine();
 
   this.createRegex();
 }
 
 Route.prototype.match = function(path) {
-  const match = this.regex.exec(path);
+  const match = this.engine.match(path);
 
-  if (!match) {
+  if (match === false) {
     this.params = undefined;
     return false;
+  } else {
+    // create parameters
+    this.params = this.engine.createParams(path);
+
+    return true;
   }
-
-  // create parameters
-  this.params = this.engine.createParams({
-    match,
-    keys: this.keys,
-    path,
-    route: this.path
-  });
-
-  return true;
 };
 
 Route.prototype.createRegex = function(path) {
   if (!path) path = this.path;
-  let { regex, keys } = this.engine.toRegex(this.path, [], this.options);
-  this.regex = regex;
-  this.keys = keys;
+  this.engine.createRegex(path);
 };
 
 Route.prototype.rebaseRoute = function(routeBase) {
   if (this.path) {
     this.path = routeBase + this.path;
-    this.regex = this.createRegex();
+    this.createRegex();
   }
 
   return this;
