@@ -31,8 +31,8 @@ a HTTPS server can be started through `app.listen()`.
 ```js
 app.listen(3000, {
   https: true,
-  key: privatekey.pem,
-  cert: certificate.pem
+  key: __dirname + "/privatekey.pem",
+  cert: __dirname + "/certificate.pem"
 });
 ```
 
