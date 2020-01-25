@@ -30,7 +30,7 @@ app.listen(3000);
 - 🚌 In-built dynamic routing - integrated, clean router system.
 - ✨ Dynamic routing engines. Use different routing engines to support the route syntax you want.
 - 🔥 View engines - supports rendering templates of multiple types including EJS, Pug and Handlebars.
-- ⚡️ Dynamic, modern, semantic asynchronous middleware.
+- ⚡️ Modern, semantic asynchronous middleware.
 - 🔧 HTTP helper methods to assist you with common HTTP tasks such as redirects, sending data and downloading files to the client.
 - 📕 Extensive, in-built middleware such as a body parser, static file server, method override and a cookie parser to help you get your app off the ground even faster.
 - 🔒 One-command HTTPS server. Quickly and easily create HTTPS servers through `app.listen()`.
