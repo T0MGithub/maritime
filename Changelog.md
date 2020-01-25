@@ -1,3 +1,13 @@
+# 0.2.0 - 25/01/2020
+
+### Changed
+
+- Moved to express-style routing syntax by default.
+
+### Added
+
+- Dynamic routing engine system. Different routing engines can be applied to support different routing syntaxes. Routing engines can be applied globally through `app.set("routing-engine", engine)` or router specifically through the router options like `new Maritime.router({engine: engine});`
+
 # 0.1.2 - 23/01/2020
 
 ### Fixed
