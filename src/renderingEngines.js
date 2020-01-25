@@ -1,6 +1,14 @@
 const path = require("path");
 const fs = require("fs");
 
+/**
+ * Method to act as a shortcut for creating template rendering engines.
+ * Returns an engine based on the parameters.
+ * 
+ * @param {String} [engine] Name of engine to create.
+ * @param {Object} [options] Options object to pass to engine object.
+ * @returns {Object} Created engine object.
+ */
 module.exports = function(engine = "ejs", options) {
   switch (engine) {
     case "ejs":
