@@ -80,6 +80,12 @@ Router.prototype.findRoute = function(path, method) {
   }
 };
 
+Router.prototype.createRegex = function() {
+  for (let i=0; i < this.routes.length; i++) {
+    this.routes[i].createRegex();
+  }
+}
+
 Router.prototype.absorbRouter = Router.prototype.absorb = function(...args) {
   var baseRoute, middleware, router;
   // if first argument is a string, a route should be applied to absorbed router

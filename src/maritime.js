@@ -82,6 +82,9 @@ module.exports = class Maritime {
     let routingEngine = this.get("routing-engine");
     if (routingEngine) router.applyRoutingEngine(routingEngine);
 
+    // active routing engines
+    router.createRegex();
+
     // mount router
     this.mountedRouters.push(router);
   }

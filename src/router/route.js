@@ -7,8 +7,6 @@ function Route(methods, path, middleware, options) {
   this.options = options || {};
   let Engine = this.options.engine || Standardengine;
   this.engine = new Engine();
-
-  this.createRegex();
 }
 
 Route.prototype.match = function(path) {
@@ -33,7 +31,6 @@ Route.prototype.createRegex = function(path) {
 Route.prototype.rebaseRoute = function(routeBase) {
   if (this.path) {
     this.path = routeBase + this.path;
-    this.createRegex();
   }
 
   return this;
