@@ -49,9 +49,9 @@ Router.prototype.use = function(...newMiddleware) {
   return this;
 };
 
-Router.prototype.applyRoutingEngine = function(engine) {
+Router.prototype.applyRoutingEngine = function(Engine) {
   for (let i = 0; i < this.routes.length; i++) {
-    this.routes[i].engine = engine;
+    this.routes[i].engine = new Engine();
     this.routes[i].createRegex();
   }
 };
