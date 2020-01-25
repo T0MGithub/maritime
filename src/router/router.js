@@ -51,8 +51,12 @@ Router.prototype.use = function(...newMiddleware) {
 
 Router.prototype.applyRoutingEngine = function(Engine) {
   for (let i = 0; i < this.routes.length; i++) {
-    this.routes[i].engine = new Engine();
-    this.routes[i].createRegex();
+    // if routing engine provided as argument to router,
+    // don't overwrite that routing engine
+    if (this.routes[i].options.engine === undefined) {
+      this.routes[i].engine = new Engine();
+      this.routes[i].createRegex();
+    }
   }
 };
 
