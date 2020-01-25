@@ -81,10 +81,10 @@ Router.prototype.findRoute = function(path, method) {
 };
 
 Router.prototype.createRegex = function() {
-  for (let i=0; i < this.routes.length; i++) {
+  for (let i = 0; i < this.routes.length; i++) {
     this.routes[i].createRegex();
   }
-}
+};
 
 Router.prototype.absorbRouter = Router.prototype.absorb = function(...args) {
   var baseRoute, middleware, router;

@@ -28,7 +28,7 @@ app.listen(3000);
 ## Features
 
 - 🚌 In-built dynamic routing - integrated, clean router system.
-- ✨ Dynamic routing engines. Use different routing engines to support the route syntax you want.
+- ✨ [Dynamic routing engines](./docs/routing-engines.md). Use different routing engines to support the route syntax you want.
 - 🔥 View engines - supports rendering templates of multiple types including EJS, Pug and Handlebars.
 - ⚡️ Modern, semantic asynchronous middleware.
 - 🔧 HTTP helper methods to assist you with common HTTP tasks such as redirects, sending data and downloading files to the client.
