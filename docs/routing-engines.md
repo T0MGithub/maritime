@@ -1,6 +1,6 @@
 # Routing Engines
 
-Different web-frameworks support routing in different ways - for example a wildcard in a traditional express-style router would look like `/file/*`, however in the official KoaJS router the syntax for a wildcard would look like `/file/(.*)`. Each routing style has advantages and disadvantages, which is why Maritime has routing engines. By default, Maritime uses [maritime-standard-routing](https://github.com/t0mgithub/maritime-standard-routing) for the routing engine which enables express-style routing.
+Different web-frameworks support routing in different ways - for example a wildcard in a traditional express-style router would look like `/file/*`, however in the official KoaJS router the syntax for a wildcard would look like `/file/(.*)`. Each routing style has advantages and disadvantages, which is why Maritime has routing engines. Routing engines can be loaded globally to Maritime, or specifically to each router in order support the routing syntax you want to use. By default, Maritime uses [maritime-standard-routing](https://github.com/t0mgithub/maritime-standard-routing) for the routing engine which enables express-style routing.
 
 ## Engines for Maritime
 
