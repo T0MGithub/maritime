@@ -1,11 +1,11 @@
 /**
  * Function to compile list of middleware into on function to execute,
  * where data is passed down the chain of middleware.
- * 
+ *
  * CREDIT: Middleware compiler adapted from NPM module koa-compose.
  *
  * @param {Array} [middleware] List of middleware functions to compile to one function
- * @returns {Function} Function to execute middleware chain. 
+ * @returns {Function} Function to execute middleware chain.
  */
 module.exports = function(middleware) {
   // return function to execute compiled middleware chain

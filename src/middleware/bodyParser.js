@@ -24,7 +24,6 @@ const extendType = function(original, extend) {
   }
 };
 
-
 /**
  * CREDIT: Code based off of koa-bodyparser with changes
  * to work with Maritime, to restyle the code and add

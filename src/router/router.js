@@ -8,6 +8,7 @@ function Router(options) {
   this.routingEngine = this.options.engine;
 }
 
+// add function to create route for each standard HTTP verb
 for (let i = 0; i < methods.length; i++) {
   let method = methods[i];
   Router.prototype[method] = function(path, ...middleware) {
