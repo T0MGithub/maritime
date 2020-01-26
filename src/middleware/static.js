@@ -14,6 +14,7 @@ module.exports = function(root = ".", options = {}) {
 
     let fileStream = send(data.req, path, options);
 
+    // if file not found
     fileStream.on("error", function error(err) {
       next();
     });
