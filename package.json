@@ -9,7 +9,10 @@
   "scripts": {
     "format": "prettier --write {**,**/**}/*.{js,md}",
     "lint": "eslint .",
-    "lint-fix": "eslint --fix ."
+    "lint-fix": "eslint --fix .",
+    "test": "mocha ./tests",
+    "test-cov": "nyc npm run test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Tom",
   "license": "MIT",
@@ -42,9 +45,14 @@
     "type-is": "^1.6.18"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
