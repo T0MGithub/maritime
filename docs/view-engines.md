@@ -10,7 +10,7 @@ Rendering/view engines are used within Maritime to render view templates for web
 
 ## Usage
 
-You can mount a view engine within Maritime by creating an engine object and applying setting it within the app with the value `rendering-engine`. Integrated engines are located in the Maritime library at `Maritime.renderingEngines.ENGINE_NAME`.
+You can mount a view engine within Maritime by creating an engine object and setting it within the app with the value `rendering-engine`. Integrated engines are located in the Maritime library at `Maritime.renderingEngines.ENGINE_NAME`.
 
 ```js
 const engine = new Maritime.renderingEngine.ejs({
@@ -53,7 +53,7 @@ class RenderingEngine {
   /**
    * Function to render template specified template, in order to be sent to client.
    *
-   * @param {String} [templatePath] Relative path (from views base directory) to template.
+   * @param {String} [templatePath] Relative path (to views base directory) of the template.
    * @param {Object=} [renderData] Data to render template with.
    * @param {Object=} [renderOptions] Template rendering options.
    * @return {String} Rendered template data.
