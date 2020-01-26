@@ -9,6 +9,7 @@ cache:
     - node_modules
 script:
   - npm run lint
+  - npm run test-cov
   - npm run coverage
 after_script:
   # upload coverage to coveralls
