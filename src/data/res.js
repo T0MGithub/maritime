@@ -9,11 +9,11 @@ var res = Object.create(http.ServerResponse.prototype);
 
 /**
  * Send specified file as an attachment to the client.
- * 
+ *
  * @param {String} [filePath] Path to file to send as an attachment.
  * @param {String=} [altFileName] Alternative name to use as the filename of the attachment.
  * @param {Object=} [options] Options object.
- * @param {Object=} [options.headers] Object containing headers to set for response. 
+ * @param {Object=} [options.headers] Object containing headers to set for response.
  */
 res.download = function(filePath, altFileName, options = {}) {
   // if second argument is object, use that as the options object
