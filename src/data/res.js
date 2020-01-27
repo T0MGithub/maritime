@@ -173,6 +173,7 @@ res.set = res.header = function(field, val) {
 const sendFile = function(res, req, filePath, options) {
   const fileStream = send(req, filePath, options);
 
+  // set options.headers to res as headers
   if (options.headers) {
     fileStream.on("headers", function(fileRes) {
       let headerKeys = Object.keys(options.headers);
