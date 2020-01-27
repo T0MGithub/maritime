@@ -7,14 +7,46 @@ const path = require("path");
 // build response object around standard HTTP server response object
 var res = Object.create(http.ServerResponse.prototype);
 
-res.download = function(filePath) {
-  const fileName = path.basename(filePath);
-  const fileType = send.mime.lookup(filePath);
+/**
+ * Send specified file as an attachment to the client.
+ * 
+ * @param {String} [filePath] Path to file to send as an attachment.
+ * @param {String=} [altFileName] Alternative name to use as the filename of the attachment.
+ * @param {Object=} [options] Options object.
+ * @param {Object=} [options.headers] Object containing headers to set for response. 
+ */
+res.download = function(filePath, altFileName, options = {}) {
+  // if second argument is object, use that as the options object
+  if (typeof altFileName === "object") options = altFileName;
 
-  this.set("Content-disposition", `attachment; filename=${fileName}`);
-  this.set("Content-type", fileType);
+  // require a filePath parameter to be set
+  if (filePath === undefined) throw new Error("File path argument required.");
 
-  this.sendFile(filePath);
+  let isAbsolutePath = path.isAbsolute(filePath);
+  let staticAppValue = this.app.get("static-folder");
+
+  // if not an absolute path and no static-folder set, throw error
+  if (!isAbsolutePath && staticAppValue === undefined)
+    throw new Error(
+      "You must either provide a absolute path or set a static base folder using app.set('static-folder', path)."
+    );
+
+  // resolve full path with static-folder as base
+  if (!isAbsolutePath) filePath = path.resolve(staticAppValue, filePath);
+
+  // set Content-Disposition header
+  const attachmentName = altFileName || path.basename(filePath);
+  let headers = {
+    "Content-Disposition": `attachment; filename=${attachmentName}`
+  };
+
+  if (options.headers) {
+    options.headers = Object.assign(options.headers, headers);
+  } else {
+    options.headers = headers;
+  }
+
+  sendFile(this, this.req, filePath, options);
 };
 
 res.json = function json(obj) {
@@ -138,6 +170,21 @@ res.set = res.header = function(field, val) {
   return this;
 };
 
+const sendFile = function(res, req, filePath, options) {
+  const fileStream = send(req, filePath, options);
+
+  if (options.headers) {
+    fileStream.on("headers", function(fileRes) {
+      let headerKeys = Object.keys(options.headers);
+      for (let i = 0; i < headerKeys.length; i++) {
+        fileRes.setHeader(headerKeys[i], options.headers[headerKeys[i]]);
+      }
+    });
+  }
+
+  fileStream.pipe(res);
+};
+
 res.sendFile = function(filePath, options = {}) {
   if (filePath === undefined) throw new Error("File path argument required.");
 
@@ -151,7 +198,7 @@ res.sendFile = function(filePath, options = {}) {
 
   if (!isAbsolutePath) filePath = path.resolve(staticAppValue, filePath);
 
-  send(this.req, filePath, options).pipe(this);
+  sendFile(this, this.req, filePath, options);
 };
 
 res.redirect = function(url, altName) {

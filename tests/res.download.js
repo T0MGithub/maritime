@@ -13,7 +13,7 @@ describe("req", function() {
 
       request(app.listen())
         .get("/")
-        .expect("Content-Type", "text/plain; charset=utf-8")
+        .expect("Content-Type", "text/plain; charset=UTF-8")
         .expect("Content-Disposition", "attachment; filename=test.txt", done);
     });
   });
