@@ -114,7 +114,7 @@ describe("router", function() {
       router.applyRoutingEngine(require("maritime-standard-routing"));
 
       const expectedEngine = require("maritime-standard-routing");
-      const actualRouter = new router.routingEngine;
+      const actualRouter = new router.routingEngine();
       assert(actualRouter instanceof expectedEngine);
       done();
     });
