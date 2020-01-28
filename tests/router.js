@@ -86,4 +86,15 @@ describe("router", function() {
         .end(done);
     });
   });
+
+  describe(".applyRoutingEngine(engine)", function() {
+    it("should change routing engine on router", function(done) {
+      const app = new Maritime();
+      const router = new Maritime.router();
+
+      router.applyRoutingEngine(require("maritime-standard-routing"));
+
+      assert(router.)
+    });
+  });
 });
