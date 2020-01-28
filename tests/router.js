@@ -19,6 +19,26 @@ describe("router", function() {
       .end(done);
   });
 
+  describe(".rebaseRouter(newBase)", function() {
+    it("should successfully rebase routes", function(done) {
+      const app = new Maritime();
+      const router = new Maritime.router();
+
+      router.rebaseRouter("/val1");
+
+      router.get("/val2", function(data) {
+        data.res.send("ok");
+      });
+
+      app.mount(router);
+
+      request(app.listen())
+        .get("/val1/val2")
+        .expect(200)
+        .end(done);
+    });
+  });
+
   describe(".absorb(router)", function() {
     it("should successfully absorb routes", function(done) {
       const app = new Maritime();
