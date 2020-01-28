@@ -6,6 +6,7 @@ function Router(options) {
   this.routes = [];
   this.middleware = [];
   this.routingEngine = this.options.engine;
+  this.routerBase = this.options.routerBase || "";
 }
 
 // add function to create route for each standard HTTP verb
@@ -20,16 +21,17 @@ for (let i = 0; i < methods.length; i++) {
   };
 }
 
-Router.prototype.addRoute = function(path, methods, middleware, options) {
+Router.prototype.addRoute = function(methods, path, middleware, options) {
   // if multiple paths provided, run this function on each path
   if (Array.isArray(path)) {
     for (let i = 0; i < path.length; i++) {
-      this.addRoute.call(this, path[i], methods, middleware, options);
+      this.addRoute.call(this, methods, path[i], middleware, options);
     }
     return this;
   }
 
-  let newRoute = new Route(path, methods, middleware, options);
+  let totalRoute = this.routerBase + path;
+  let newRoute = new Route(methods, totalRoute, middleware, options);
 
   this.routes.push(newRoute);
 
@@ -37,6 +39,7 @@ Router.prototype.addRoute = function(path, methods, middleware, options) {
 };
 
 Router.prototype.rebaseRouter = function(routeBase) {
+  this.routerBase = routeBase + this.routerBase;
   for (let i = 0; i < this.routes.length; i++) {
     this.routes[i].rebaseRoute(routeBase);
   }
