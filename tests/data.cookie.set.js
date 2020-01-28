@@ -15,7 +15,8 @@ describe("data", function() {
 
         request(app.listen())
           .get("/")
-          .expect("Set-Cookie", "test=test-data; path=/; httponly").end(done)
+          .expect("Set-Cookie", "test=test-data; path=/; httponly")
+          .end(done);
       });
     });
   });
