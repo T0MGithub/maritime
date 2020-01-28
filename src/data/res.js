@@ -211,11 +211,6 @@ res.redirect = function(url, altName) {
   this.send("Redirecting you.");
 };
 
-res.status = function(statusCode) {
-  this.statusCode = statusCode;
-  return this;
-};
-
 utils.addSetter(res, "status", function(newStatus) {
   this.statusCode = newStatus;
   return this;
@@ -226,7 +221,7 @@ utils.addGetter(res, "status", function() {
 });
 
 res.sendStatus = function(statusCode) {
-  this.status(statusCode);
+  this.status = statusCode;
   this.type("text");
   return this.send(statusCode);
 };
