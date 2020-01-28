@@ -5,6 +5,7 @@ A new type of NodeJS web framework - providing a clean, full-toolkit to develop 
 [![Maritime NPM Version](https://img.shields.io/npm/v/maritime?color=blue)](https://npmjs.org/package/maritime)
 [![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Build Status](https://travis-ci.org/T0MGithub/maritime.svg?branch=master)](https://travis-ci.org/T0MGithub/maritime)
+[![Coverage Status](https://coveralls.io/repos/github/T0MGithub/maritime/badge.svg?branch=master)](https://coveralls.io/github/T0MGithub/maritime?branch=master)
 [![Try maritime on RunKit](https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen)](https://npm.runkit.com/maritime)
 
 ```js
