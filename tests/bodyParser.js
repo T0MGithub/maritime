@@ -38,9 +38,11 @@ describe("bodyparser()", function() {
   it("should successfully parse raw text data", function(done) {
     const app = new Maritime();
 
-    app.use(Maritime.bodyParser({
-      enableTypes: ["json", "form", "text"]
-    }));
+    app.use(
+      Maritime.bodyParser({
+        enableTypes: ["json", "form", "text"]
+      })
+    );
     app.use(function(data) {
       data.res.send(data.req.body);
     });

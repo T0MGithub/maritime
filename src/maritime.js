@@ -123,6 +123,7 @@ module.exports = class Maritime {
       // match a route
       let path = data.req.strippedPath;
       let method = data.req.method;
+
       const matchData = this.findRouteMatch(path, method);
 
       // compile router specific middleware
