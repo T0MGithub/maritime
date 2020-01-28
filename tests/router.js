@@ -19,7 +19,7 @@ describe("router", function() {
       .end(done);
   });
 
-  describe(".absorb", function(done) {
+  describe(".absorb(router)", function() {
     it("should successfully absorb routes", function(done) {
       const app = new Maritime();
       const router1 = new Maritime.router();
@@ -41,7 +41,9 @@ describe("router", function() {
         .expect(200)
         .end(done);
     });
+  });
 
+  describe(".absorb(newRouterBase, router)", function() {
     it("should absorb router and rebase routes", function(done) {
       const app = new Maritime();
       const router1 = new Maritime.router();
@@ -60,6 +62,27 @@ describe("router", function() {
 
       request(app.listen())
         .get("/test/route2")
+        .expect(200)
+        .end(done);
+    });
+  });
+
+
+  describe(".use(middleware)", function() {
+    it("should apply middleware to all routes on router", function(done) {
+      const app = new Maritime();
+      const router = new Maritime.router();
+
+      router.use(function(data, next) {
+        return data.res.send("ok");
+      })
+
+      router.get("*", function(data) {});
+
+      app.mount(router);
+
+      request(app.listen())
+        .get("/")
         .expect(200)
         .end(done);
     });
