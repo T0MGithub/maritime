@@ -67,7 +67,6 @@ describe("router", function() {
     });
   });
 
-
   describe(".use(middleware)", function() {
     it("should apply middleware to all routes on router", function(done) {
       const app = new Maritime();
@@ -75,7 +74,7 @@ describe("router", function() {
 
       router.use(function(data, next) {
         return data.res.send("ok");
-      })
+      });
 
       router.get("*", function(data) {});
 
