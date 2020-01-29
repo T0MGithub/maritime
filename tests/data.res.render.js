@@ -26,9 +26,9 @@ describe("data", function() {
 
           app.use(function(data) {
             data.res.render("./fixtures/pugTemplate.pug", {
-              name: 'Tom'
+              name: "Tom"
             });
-          })
+          });
 
           request(app.listen())
             .get("/")
@@ -50,9 +50,9 @@ describe("data", function() {
 
           app.use(function(data) {
             data.res.render("./fixtures/ejsTemplate.ejs", {
-              name: 'Tom'
+              name: "Tom"
             });
-          })
+          });
 
           request(app.listen())
             .get("/")
@@ -74,9 +74,9 @@ describe("data", function() {
 
           app.use(function(data) {
             data.res.render("./fixtures/hbsTemplate.hbs", {
-              name: 'Tom'
+              name: "Tom"
             });
-          })
+          });
 
           request(app.listen())
             .get("/")
