@@ -98,7 +98,7 @@ res.send = function(body = "") {
 
     // reflect this in content-type
     if (typeof type === "string") {
-      this.set("Content-Type", utils.setCharset(type, "utf-8"));
+      this.set("Content-Type", utils.setCharset(type, "UTF-8"));
     }
   }
 
