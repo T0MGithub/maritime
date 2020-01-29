@@ -50,9 +50,9 @@ res.download = function(filePath, altFileName, options = {}) {
 };
 
 res.json = function json(obj) {
-  let escape = this.app.get("json escape");
-  let replacer = this.app.get("json replacer");
-  let spaces = this.app.get("json spaces");
+  let escape = this.app.get("json-escape");
+  let replacer = this.app.get("json-replacer");
+  let spaces = this.app.get("json-spaces");
   let body = JSON.stringify(obj, replacer, spaces, escape);
 
   // set content-type to JSON
@@ -98,7 +98,7 @@ res.send = function(body = "") {
 
     // reflect this in content-type
     if (typeof type === "string") {
-      this.set("Content-Type", utils.setCharset(type, "utf-8"));
+      this.set("Content-Type", utils.setCharset(type, "UTF-8"));
     }
   }
 
@@ -211,11 +211,6 @@ res.redirect = function(url, altName) {
   this.send("Redirecting you.");
 };
 
-res.status = function(statusCode) {
-  this.statusCode = statusCode;
-  return this;
-};
-
 utils.addSetter(res, "status", function(newStatus) {
   this.statusCode = newStatus;
   return this;
@@ -226,7 +221,7 @@ utils.addGetter(res, "status", function() {
 });
 
 res.sendStatus = function(statusCode) {
-  this.status(statusCode);
+  this.status = statusCode;
   this.type("text");
   return this.send(statusCode);
 };
