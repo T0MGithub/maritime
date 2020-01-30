@@ -21,7 +21,7 @@ const extendType = function(original, extend) {
 };
 
 var parse, copy, typeis;
-const loadDependancies = function() {
+const loadDependencies = function() {
   try {
     parse = require("co-body");
     copy = require("copy-to");
@@ -42,7 +42,7 @@ const loadDependancies = function() {
  * @returns {Function} Body parser middleware function.
  */
 module.exports = function(options = {}) {
-  loadDependancies();
+  loadDependencies();
 
   let detectJSON = options.detectJSON;
   let onerror = options.onerror;

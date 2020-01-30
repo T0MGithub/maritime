@@ -15,7 +15,7 @@ Maritime aims to be a complete web framework experience, and equip developers wi
 |       HTTP Helper Methods | ✓                 | ✓                 |                  | ✓                 |
 |             Context Style | Single Object     | Single Object     | Separate Objects | Separate Objects  |
 |            Response Style | Immediate Command | End of Middleware | HTTP Methods     | Immediate Command |
-|              Dependancies | 4                 | 24                | 4                | 30                |
+|              Dependencies | 4                 | 24                | 4                | 30                |
 
 ### Table Explanation
 

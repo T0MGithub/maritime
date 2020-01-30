@@ -13,7 +13,7 @@
 
 - `res.download()` and `res.sendFile` now both resolve provided paths allowing them to contain relative path arguments such as `../`.
 - Changed it so rebasing a router with `router.applyRoutingEngine()` now applies the provided base to all new routes.
-- Dependancies required for `bodyParser()` middleware are no longed installed by default.
+- Dependencies required for `bodyParser()` middleware are no longed installed by default.
 - `res.status(statusCode)` renamed to `res.setStatus(statusCode)`.
 - Moved to consistent capitalization of `UTF-8` in response headers.
 

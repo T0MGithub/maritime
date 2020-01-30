@@ -3,7 +3,7 @@ const Maritime = require("../../index.js");
 const request = require("supertest");
 const utils = require("../../src/utils.js");
 
-const bodyParserDependanciesInstalled = utils.bodyParserDependanciesInstalled;
+const bodyParserDependenciesInstalled = utils.bodyParserDependenciesInstalled;
 
 describe("methodOverride()", function() {
   it("method-override successfully overwrites method due to query string", function(done) {
@@ -51,7 +51,7 @@ describe("methodOverride()", function() {
       .expect("val1", done);
   });
 
-  (bodyParserDependanciesInstalled() ? it : it.skip)(
+  (bodyParserDependenciesInstalled() ? it : it.skip)(
     "method-override successfully overwrites due to form data",
     function(done) {
       const app = new Maritime();

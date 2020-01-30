@@ -45,7 +45,7 @@ module.exports.addSetter = function(object, name, setterFunction) {
   });
 };
 
-module.exports.bodyParserDependanciesInstalled = function() {
+module.exports.bodyParserDependenciesInstalled = function() {
   try {
     require("copy-to");
     require("co-body");

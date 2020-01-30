@@ -3,10 +3,10 @@ const Maritime = require("../../index.js");
 const request = require("supertest");
 const utils = require("../../src/utils.js");
 
-const bodyParserDependanciesInstalled = utils.bodyParserDependanciesInstalled;
+const bodyParserDependenciesInstalled = utils.bodyParserDependenciesInstalled;
 
 describe("bodyparser()", function() {
-  (bodyParserDependanciesInstalled() ? it : it.skip)(
+  (bodyParserDependenciesInstalled() ? it : it.skip)(
     "should successfully parse form data",
     function(done) {
       console;
@@ -26,7 +26,7 @@ describe("bodyparser()", function() {
     }
   );
 
-  (bodyParserDependanciesInstalled() ? it : it.skip)(
+  (bodyParserDependenciesInstalled() ? it : it.skip)(
     "should successfully parse json data",
     function(done) {
       const app = new Maritime();
@@ -45,7 +45,7 @@ describe("bodyparser()", function() {
     }
   );
 
-  (bodyParserDependanciesInstalled() ? it : it.skip)(
+  (bodyParserDependenciesInstalled() ? it : it.skip)(
     "should successfully parse raw text data",
     function(done) {
       const app = new Maritime();
