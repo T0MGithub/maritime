@@ -214,9 +214,9 @@ res.redirect = function(url, altName) {
   this.send("Redirecting you.");
 };
 
-res.setStatus = function(newStatus) {	
-  this.statusCode = newStatus;	
-  return this;	
+res.setStatus = function(newStatus) {
+  this.statusCode = newStatus;
+  return this;
 };
 
 utils.addSetter(res, "status", function(newStatus) {
