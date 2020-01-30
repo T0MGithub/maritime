@@ -1,11 +1,3 @@
-try {
-  const parse = require("co-body");
-  const copy = require("copy-to");
-  const typeis = require("type-is");
-} catch(err) {
-  throw new Error("In order to use the bodyParser middleware, you must install the co-body, copy-to and type-is NPM modules.");
-}
-
 const is = function(req, type, ...types) {
   return typeis(req, type, ...types);
 };
@@ -37,6 +29,16 @@ const extendType = function(original, extend) {
  * @returns {Function} Body parser middleware function.
  */
 module.exports = function(options = {}) {
+  try {
+    const parse = require("co-body");
+    const copy = require("copy-to");
+    const typeis = require("type-is");
+  } catch (err) {
+    throw new Error(
+      "In order to use the bodyParser middleware, you must install the co-body, copy-to and type-is NPM modules."
+    );
+  }
+
   let detectJSON = options.detectJSON;
   let onerror = options.onerror;
 

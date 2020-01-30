@@ -12,10 +12,11 @@ describe("data", function() {
           data.res.sendFile(__dirname + "../../../fixtures/test.txt");
         });
 
-        request(app.listen()).get("/")
-        .expect("Content-Type", "text/plain; charset=UTF-8")
-        .expect(200)
-        .expect("Test data!", done);
+        request(app.listen())
+          .get("/")
+          .expect("Content-Type", "text/plain; charset=UTF-8")
+          .expect(200)
+          .expect("Test data!", done);
       });
     });
   });

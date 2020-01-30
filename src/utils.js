@@ -45,6 +45,17 @@ module.exports.addSetter = function(object, name, setterFunction) {
   });
 };
 
+module.exports.bodyParserDependanciesInstalled = function() {
+  try {
+    require("copy-to");
+    require("co-body");
+    require("type-is");
+    return true;
+  } catch (err) {
+    return false;
+  }
+};
+
 module.exports.setCharset = function setCharset(type, charset) {
   if (!type || !charset) {
     return type;
