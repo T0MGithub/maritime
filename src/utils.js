@@ -51,7 +51,7 @@ module.exports.setCharset = function setCharset(type, charset) {
   }
 
   // parse type
-  var parsed = contentType.parse(type);
+  let parsed = contentType.parse(type);
 
   // set charset
   parsed.parameters.charset = charset;
