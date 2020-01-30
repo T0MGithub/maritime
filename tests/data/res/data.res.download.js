@@ -1,5 +1,5 @@
 const assert = require("assert");
-const Maritime = require("../index.js");
+const Maritime = require("../../../index.js");
 const request = require("supertest");
 
 describe("data", function() {
@@ -9,7 +9,7 @@ describe("data", function() {
         const app = new Maritime();
 
         app.use(function(data) {
-          data.res.download(__dirname + "/fixtures/test.txt");
+          data.res.download(__dirname + "../../../fixtures/test.txt");
         });
 
         request(app.listen())
@@ -24,7 +24,10 @@ describe("data", function() {
         const app = new Maritime();
 
         app.use(function(data) {
-          data.res.download(__dirname + "/fixtures/test.txt", "test2.txt");
+          data.res.download(
+            __dirname + "../../../fixtures/test.txt",
+            "test2.txt"
+          );
         });
 
         request(app.listen())

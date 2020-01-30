@@ -1,5 +1,5 @@
 const assert = require("assert");
-const Maritime = require("../index.js");
+const Maritime = require("../../../index.js");
 const request = require("supertest");
 
 const installed = function(moduleName) {
