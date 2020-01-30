@@ -43,21 +43,21 @@ describe("utils", function() {
 
   describe("setCharset(type, charset)", function() {
     it("should successfully format content type header with charset", function(done) {
-      let header = "text/plain; charset=UTF-8"
+      let header = "text/plain; charset=UTF-8";
       let updatedHeader = utils.setCharset(header, "ascii");
-      
+
       assert(updatedHeader === "text/plain; charset=ascii");
 
       done();
     });
 
     it("shouldn't change content type header if either or both arguments missing", function(done) {
-      let header = "text/plain; charset=UTF-8"
+      let header = "text/plain; charset=UTF-8";
       let updatedHeader = utils.setCharset(header);
-      
+
       assert(updatedHeader === "text/plain; charset=UTF-8");
 
       done();
-    })
-  })
+    });
+  });
 });
