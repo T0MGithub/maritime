@@ -1,5 +1,5 @@
 const assert = require("assert");
-const Maritime = require("../index.js");
+const Maritime = require("../../../index.js");
 const request = require("supertest");
 
 describe("data", function() {
@@ -16,6 +16,25 @@ describe("data", function() {
         request(app.listen())
           .get("/")
           .expect("Set-Cookie", "test=test-data; path=/; httponly")
+          .end(done);
+      });
+
+      it('should sign values with app.get("keys") value', function(done) {
+        const app = new Maritime({
+          keys: ["test keys"]
+        });
+
+        app.use(function(data) {
+          data.cookies.set("test", "test-data", { signed: true });
+          data.res.sendStatus(200);
+        });
+
+        request(app.listen())
+          .get("/")
+          .expect(
+            "Set-Cookie",
+            "test=test-data; path=/; httponly,test.sig=5UB3cV6dU6VukS0VMtHAjwOT0D8; path=/; httponly"
+          )
           .end(done);
       });
     });

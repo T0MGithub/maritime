@@ -10,7 +10,7 @@
     "format": "prettier --write {**,**/**}/*.{js,md}",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
-    "test": "mocha ./tests --exit",
+    "test": "mocha ./tests --recursive --exit",
     "test-cov": "nyc npm run test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

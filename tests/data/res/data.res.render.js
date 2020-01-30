@@ -1,5 +1,5 @@
 const assert = require("assert");
-const Maritime = require("../index.js");
+const Maritime = require("../../../index.js");
 const request = require("supertest");
 
 const installed = function(moduleName) {
@@ -25,7 +25,7 @@ describe("data", function() {
           app.set("rendering-engine", engine);
 
           app.use(function(data) {
-            data.res.render("./fixtures/pugTemplate.pug", {
+            data.res.render("../../fixtures/pugTemplate.pug", {
               name: "Tom"
             });
           });
@@ -49,7 +49,7 @@ describe("data", function() {
           app.set("rendering-engine", engine);
 
           app.use(function(data) {
-            data.res.render("./fixtures/ejsTemplate.ejs", {
+            data.res.render("../../fixtures/ejsTemplate.ejs", {
               name: "Tom"
             });
           });
@@ -73,7 +73,7 @@ describe("data", function() {
           app.set("rendering-engine", engine);
 
           app.use(function(data) {
-            data.res.render("./fixtures/hbsTemplate.hbs", {
+            data.res.render("../../fixtures/hbsTemplate.hbs", {
               name: "Tom"
             });
           });

@@ -33,6 +33,8 @@ res.download = function(filePath, altFileName, options = {}) {
 
   // resolve full path with static-folder as base
   if (!isAbsolutePath) filePath = path.resolve(staticAppValue, filePath);
+  // else resolve path to allow for relative arguments in path
+  else filePath = path.resolve(filePath);
 
   // set Content-Disposition header
   const attachmentName = altFileName || path.basename(filePath);
