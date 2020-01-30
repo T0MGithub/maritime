@@ -200,6 +200,7 @@ res.sendFile = function(filePath, options = {}) {
     );
 
   if (!isAbsolutePath) filePath = path.resolve(staticAppValue, filePath);
+  else filePath = path.resolve(filePath);
 
   sendFile(this, this.req, filePath, options);
 };
