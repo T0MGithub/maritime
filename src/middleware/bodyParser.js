@@ -30,7 +30,7 @@ const loadDependancies = function() {
       "In order to use the bodyParser middleware, you must install the co-body, copy-to and type-is NPM modules."
     );
   }
-}
+};
 
 /**
  * CREDIT: Code based off of koa-bodyparser with changes
