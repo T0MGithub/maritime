@@ -1,3 +1,19 @@
+# 0.3 - xx/xx/2020
+
+### Added
+- Added some JSDoc documentation.
+- You can now provide `res.download(path, altName)` an altName which will be set as the name of the file the client downloads.
+
+### Fixed
+- Fixed `res.sendStatus(statusCode)` error due to duplicate status variables on response object. You can know set the reponse status with `res.status = statusCode` or `res.setStatus(statusCode)`.
+
+### Changed
+- `res.download()` and `res.sendFile` now both resolve provided paths allowing them to contain relative path arguments such as `../`.
+- Changed it so rebasing a router with `router.applyRoutingEngine()` now applies the provided base to all new routes.
+- Dependancies required for `bodyParser()` middleware are no longed installed by default.
+- `res.status(statusCode)` renamed to `res.setStatus(statusCode)`.
+- Moved to consistent capitalization of `UTF-8` in response headers.
+
 # 0.2.1 - 25/01/2020
 
 ### Fixed
