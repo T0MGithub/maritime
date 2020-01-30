@@ -8,8 +8,8 @@ cache:
   directories:
     - node_modules
 script:
-  # install modules needed for engine tests
-  - npm i ejs handlebars pug
+  # install optional modules for tests
+  - npm i ejs handlebars pug co-body copy-to type-is
 
   - npm run lint
   - npm run test-cov

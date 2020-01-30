@@ -1,6 +1,10 @@
-const parse = require("co-body");
-const copy = require("copy-to");
-const typeis = require("type-is");
+try {
+  const parse = require("co-body");
+  const copy = require("copy-to");
+  const typeis = require("type-is");
+} catch(err) {
+  throw new Error("In order to use the bodyParser middleware, you must install the co-body, copy-to and type-is NPM modules.");
+}
 
 const is = function(req, type, ...types) {
   return typeis(req, type, ...types);
