@@ -3,9 +3,9 @@ const utils = require("../utils.js");
 const standardMethods = utils.nodeHttpVerbs().map(verb => verb.toUpperCase());
 
 /**
- * Function to create a middleware with provided options 
+ * Function to create a middleware with provided options
  * to add methodOverride functionality.
- * 
+ *
  * @param {Object} [options] Options object.
  * @param {String} [options.methodName="_method"] Form name and query key to look for override data in.
  * @param {String} [options.overrideHeaderName="X-Override-Header"] Header name to look for override data in.
