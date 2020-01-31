@@ -27,14 +27,33 @@ module.exports = class Maritime {
     this.set("x-powered-by", this.env !== "production");
   }
 
+  /**
+   * Sets value to this.settings based on provided key and value.
+   * Values set can be retrieved through get(key).
+   * 
+   * @param {String} [setting] Key to use when adding value to this.settings.
+   * @param {String} [val] Value to set in this.settings.
+   */
   set(setting, val) {
     this.settings[setting] = val;
   }
 
+  /**
+   * Returns this.settings value for provided key (usually set through .get(key, value)).
+   * 
+   * @param {String} [setting] Key to find the value of in this.settings.
+   * @return this.settings value for key provided.
+   */
   get(setting) {
     return this.settings[setting];
   }
 
+  /**
+   * Add a global middleware function to be run during every request. Global
+   * middleware are run before route specific middleware.
+   *
+   * @param {Function} [middleware] Middleware function to add to global middleware.
+   */
   use(middleware) {
     if (typeof middleware !== "function")
       throw new Error("Middleware provided with .use() must be a function.");
@@ -42,6 +61,13 @@ module.exports = class Maritime {
     this.globalMiddleware.push(middleware);
   }
 
+  /**
+   * Mount a router to the app to match routes.
+   * 
+   * @param {String=} [baseRoute] Path to preface all routes with.
+   * @param {...Function=} [middleware] List of middleware to add to all routes.
+   * @param {Object} [router] Actual router object to use to match routes.
+   */
   mount(...args) {
     let baseRoute, middleware, router;
     // if first argument is a string, a route should be applied to absorbed router
@@ -82,7 +108,7 @@ module.exports = class Maritime {
     let routingEngine = this.get("routing-engine");
     if (routingEngine) router.applyRoutingEngine(routingEngine);
 
-    // active routing engines
+    // activate routing engine
     router.createRegex();
 
     // mount router
