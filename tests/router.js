@@ -24,11 +24,11 @@ describe("router", function() {
       const app = new Maritime();
       const router = new Maritime.router();
 
-      router.rebaseRouter("/val1");
-
       router.get("/val2", function(data) {
         data.res.send("ok");
       });
+
+      router.rebaseRouter("/val1");
 
       app.mount(router);
 

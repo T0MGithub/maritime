@@ -2,7 +2,7 @@ const contentType = require("content-type");
 
 /**
  * Function to return list of standard HTTP verbs.
- * 
+ *
  * @return {List} List of standard HTTP verbs.
  */
 module.exports.nodeHttpVerbs = () => [
@@ -36,10 +36,10 @@ module.exports.nodeHttpVerbs = () => [
 
 /**
  * Function to add a getter function to an object.
- * 
+ *
  * @param {Object} [object] Object to add the getter function to.
  * @param {String} [name] Name of getter function to add.
- * @param {Function} [getterFunction] Actual getter function. 
+ * @param {Function} [getterFunction] Actual getter function.
  */
 module.exports.addGetter = function(object, name, getterFunction) {
   Object.defineProperty(object, name, {
@@ -51,10 +51,10 @@ module.exports.addGetter = function(object, name, getterFunction) {
 
 /**
  * Function to add a setter function to an object.
- * 
+ *
  * @param {Object} [object] Object to add the setter function to.
  * @param {String} [name] Name of setter function to add.
- * @param {Function} [setterFunction] Actual setter function. 
+ * @param {Function} [setterFunction] Actual setter function.
  */
 module.exports.addSetter = function(object, name, setterFunction) {
   Object.defineProperty(object, name, {

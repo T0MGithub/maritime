@@ -30,7 +30,7 @@ module.exports = class Maritime {
   /**
    * Sets value to this.settings based on provided key and value.
    * Values set can be retrieved through get(key).
-   * 
+   *
    * @param {String} [setting] Key to use when adding value to this.settings.
    * @param {String} [val] Value to set in this.settings.
    */
@@ -40,7 +40,7 @@ module.exports = class Maritime {
 
   /**
    * Returns this.settings value for provided key (usually set through .get(key, value)).
-   * 
+   *
    * @param {String} [setting] Key to find the value of in this.settings.
    * @return this.settings value for key provided.
    */
@@ -63,7 +63,7 @@ module.exports = class Maritime {
 
   /**
    * Mount a router to the app to match routes.
-   * 
+   *
    * @param {String=} [baseRoute] Path to preface all routes with.
    * @param {...Function=} [middleware] List of middleware to add to all routes.
    * @param {Object} [router] Actual router object to use to match routes.
