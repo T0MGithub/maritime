@@ -1,7 +1,3 @@
-const parse = require("co-body");
-const copy = require("copy-to");
-const typeis = require("type-is");
-
 const is = function(req, type, ...types) {
   return typeis(req, type, ...types);
 };
@@ -24,6 +20,19 @@ const extendType = function(original, extend) {
   }
 };
 
+var parse, copy, typeis;
+const loadDependencies = function() {
+  try {
+    parse = require("co-body");
+    copy = require("copy-to");
+    typeis = require("type-is");
+  } catch (err) {
+    throw new Error(
+      "In order to use the bodyParser middleware, you must install the co-body, copy-to and type-is NPM modules."
+    );
+  }
+};
+
 /**
  * CREDIT: Code based off of koa-bodyparser with changes
  * to work with Maritime, to restyle the code and add
@@ -33,6 +42,8 @@ const extendType = function(original, extend) {
  * @returns {Function} Body parser middleware function.
  */
 module.exports = function(options = {}) {
+  loadDependencies();
+
   let detectJSON = options.detectJSON;
   let onerror = options.onerror;
 

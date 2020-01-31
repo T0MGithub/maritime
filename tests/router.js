@@ -24,11 +24,11 @@ describe("router", function() {
       const app = new Maritime();
       const router = new Maritime.router();
 
-      router.rebaseRouter("/val1");
-
       router.get("/val2", function(data) {
         data.res.send("ok");
       });
+
+      router.rebaseRouter("/val1");
 
       app.mount(router);
 
@@ -104,6 +104,49 @@ describe("router", function() {
         .get("/")
         .expect(200)
         .end(done);
+    });
+
+    it("should add list of middleware to router", function(done) {
+      const app = new Maritime();
+      const router = new Maritime.router();
+
+      router.use(
+        function(data, next) {
+          next();
+        },
+        function(data, next) {
+          return data.res.send("ok");
+        }
+      );
+
+      router.get("*", function(data) {});
+
+      app.mount(router);
+
+      request(app.listen())
+        .get("/")
+        .expect(200)
+        .end(done);
+    });
+
+    it("should refuse to add non-function to router", function(done) {
+      const router = new Maritime.router();
+
+      assert.throws(function() {
+        router.use(0);
+      }, Error);
+
+      done();
+    });
+
+    it("should refuse to add list of middleware not containing all functions", function(done) {
+      const router = new Maritime.router();
+
+      assert.throws(function() {
+        router.use([function() {}, 0]);
+      }, Error);
+
+      done();
     });
   });
 

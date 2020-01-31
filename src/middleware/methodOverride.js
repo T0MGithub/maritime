@@ -2,6 +2,17 @@ const utils = require("../utils.js");
 
 const standardMethods = utils.nodeHttpVerbs().map(verb => verb.toUpperCase());
 
+/**
+ * Function to create a middleware with provided options
+ * to add methodOverride functionality.
+ *
+ * @param {Object} [options] Options object.
+ * @param {String} [options.methodName="_method"] Form name and query key to look for override data in.
+ * @param {String} [options.overrideHeaderName="X-Override-Header"] Header name to look for override data in.
+ * @param {Boolean} [options.standardMethodsOnly=true] If true, methods can only be changed to standard HTTP verbs.
+ * @param {List} [options.methodsToOverride=["POST"]] Method verbs to override e.g. if "POST" is included, POST requests will be overrided.
+ * @return {Function} MethodOverride middleware function.
+ */
 module.exports = function(options = {}) {
   let methodName = options.methodName || "_method";
   let overrideHeaderName = options.overrideHeaderName || "X-Override-Header";

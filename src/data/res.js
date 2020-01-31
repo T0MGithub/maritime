@@ -200,6 +200,7 @@ res.sendFile = function(filePath, options = {}) {
     );
 
   if (!isAbsolutePath) filePath = path.resolve(staticAppValue, filePath);
+  else filePath = path.resolve(filePath);
 
   sendFile(this, this.req, filePath, options);
 };
@@ -211,6 +212,11 @@ res.redirect = function(url, altName) {
   this.statusCode = 302;
 
   this.send("Redirecting you.");
+};
+
+res.setStatus = function(newStatus) {
+  this.statusCode = newStatus;
+  return this;
 };
 
 utils.addSetter(res, "status", function(newStatus) {

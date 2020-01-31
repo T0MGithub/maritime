@@ -48,6 +48,17 @@ Router.prototype.rebaseRouter = function(routeBase) {
 };
 
 Router.prototype.use = function(...newMiddleware) {
+  // check if either function or a list of functions has been provided
+  if (Array.isArray(newMiddleware)) {
+    for (let i = 0; i < newMiddleware.length; i++) {
+      if (typeof newMiddleware[i] !== "function")
+        throw new Error("Middleware provided with .use() must be a function.");
+    }
+  } else {
+    if (typeof newMiddleware !== "function")
+      throw new Error("Middleware provided with .use() must be a function.");
+  }
+
   this.middleware = this.middleware.concat(newMiddleware);
 
   return this;
