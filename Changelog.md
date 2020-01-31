@@ -4,6 +4,7 @@
 
 - Added some JSDoc documentation.
 - You can now provide `res.download(path, altName)` an altName which will be set as the name of the file the client downloads.
+- Checks to ensure only functions can be added to router as middleware.
 
 ### Fixed
 
