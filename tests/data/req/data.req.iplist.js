@@ -17,7 +17,7 @@ describe("data", function() {
 
           request(app.listen())
             .get("/")
-            .set("X-Forwarded-For", '127.0.0.1')
+            .set("X-Forwarded-For", "127.0.0.1")
             .expect(200)
             .expect(["127.0.0.1"], done);
         });
@@ -38,7 +38,7 @@ describe("data", function() {
         });
       });
 
-      describe("when proxy enabled", function() { 
+      describe("when proxy enabled", function() {
         it("should ignore X-Forwarded-For header", function(done) {
           const app = new Maritime();
 
@@ -48,10 +48,10 @@ describe("data", function() {
 
           request(app.listen())
             .get("/")
-            .set("X-Forwarded-For", '127.0.0.1')
+            .set("X-Forwarded-For", "127.0.0.1")
             .expect(200)
             .expect([], done);
-        })
+        });
       });
     });
   });
