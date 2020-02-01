@@ -4,15 +4,15 @@
 
 - Added some JSDoc documentation.
 - You can now provide `res.download(path, altName)` an altName which will be set as the name of the file the client downloads.
-- Checks to ensure only functions can be added to router as middleware.
+- Added checks to ensure only functions or a list of functions can be added to router as middleware.
 
 ### Fixed
 
-- Fixed `res.sendStatus(statusCode)` error due to duplicate status variables on response object. You can know set the reponse status with `res.status = statusCode` or `res.setStatus(statusCode)`.
+- Fixed `res.sendStatus(statusCode)` error due to duplicate status variables on response object. You can now set the reponse status with `res.status = statusCode` or `res.setStatus(statusCode)`.
 
 ### Changed
 
-- `res.download()` and `res.sendFile` now both resolve provided paths allowing them to contain relative path arguments such as `../`.
+- `res.download()` and `res.sendFile()` now both resolve provided paths allowing them to contain relative path arguments such as `../`.
 - Changed it so applying `router.applyRoutingEngine()` adds routing engine to all newly created routes.
 - Changed it so rebasing a router with `router.rebaseRouter()` now applies the provided base to all new routes.
 - Dependencies required for `bodyParser()` middleware are no longed installed by default.
