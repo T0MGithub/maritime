@@ -66,12 +66,11 @@ res.json = function json(obj) {
 };
 
 res.send = function(body) {
-  let chunk = body;
   let encoding;
   let req = this.req;
   let type;
 
-  switch (typeof chunk) {
+  switch (typeof body) {
     // string defaulting to html
     case "string":
       if (!this.get("Content-Type")) {
@@ -81,20 +80,20 @@ res.send = function(body) {
     case "boolean":
     case "number":
     case "object":
-      if (chunk === null) {
-        chunk = "";
-      } else if (Buffer.isBuffer(chunk)) {
+      if (body === null) {
+        body = "";
+      } else if (Buffer.isBuffer(body)) {
         if (!this.get("Content-Type")) {
           this.type("bin");
         }
       } else {
-        return this.json(chunk);
+        return this.json(body);
       }
       break;
   }
 
   // write strings in utf-8
-  if (typeof chunk === "string") {
+  if (typeof body === "string") {
     encoding = "utf8";
     type = this.get("Content-Type");
 
@@ -106,15 +105,15 @@ res.send = function(body) {
 
   // populate Content-Length
   let len;
-  if (chunk !== undefined) {
-    if (Buffer.isBuffer(chunk)) {
+  if (body !== undefined) {
+    if (Buffer.isBuffer(body)) {
       // get length of Buffer
-      len = chunk.length;
+      len = body.length;
     } else {
-      // convert chunk to Buffer and calculate
-      chunk = Buffer.from(chunk, encoding);
+      // convert body to Buffer and calculate
+      body = Buffer.from(body, encoding);
       encoding = undefined;
-      len = chunk.length;
+      len = body.length;
     }
 
     this.set("Content-Length", len);
@@ -125,7 +124,7 @@ res.send = function(body) {
     this.removeHeader("Content-Type");
     this.removeHeader("Content-Length");
     this.removeHeader("Transfer-Encoding");
-    chunk = "";
+    body = "";
   }
 
   if (req.method === "HEAD") {
@@ -133,7 +132,7 @@ res.send = function(body) {
     this.end();
   } else {
     // respond
-    this.end(chunk, encoding);
+    this.end(body, encoding);
   }
 
   return this;
