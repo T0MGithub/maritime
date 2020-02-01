@@ -120,7 +120,7 @@ res.send = function(body) {
   }
 
   // strip irrelevant headers
-  if (204 === this.statusCode || 304 === this.statusCode) {
+  if (this.statusCode === 204 || this.statusCode === 304) {
     this.removeHeader("Content-Type");
     this.removeHeader("Content-Length");
     this.removeHeader("Transfer-Encoding");
