@@ -8,6 +8,7 @@
 
 ### Fixed
 
+- Fixed `data.res.redirect("back")` redirecting to referrer header value.
 - Fixed `res.sendStatus(statusCode)` error due to duplicate status variables on response object. You can now set the reponse status with `res.status = statusCode` or `res.setStatus(statusCode)`.
 
 ### Changed
