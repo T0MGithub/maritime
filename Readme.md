@@ -1,13 +1,25 @@
 ![Maritime NodeJS Web Framework Logo](https://i.imgur.com/psmyh0O.png)
 
-A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. [Learn why you should start using Maritime today.](/docs/why-use-maritime.md)
-
-[![Maritime NPM Version](https://img.shields.io/npm/v/maritime?color=blue)](https://npmjs.org/package/maritime)
-![Minified NPM Module Size](https://img.shields.io/bundlephobia/minzip/maritime)
-[![Build Status](https://travis-ci.org/T0MGithub/maritime.svg?branch=master)](https://travis-ci.org/T0MGithub/maritime)
-[![Coverage Status](https://coveralls.io/repos/github/T0MGithub/maritime/badge.svg?branch=master&service=github)](https://coveralls.io/github/T0MGithub/maritime?branch=master)
-[![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Try maritime on RunKit](https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen)](https://npm.runkit.com/maritime)
+<div style="text-align: center;">
+  <p>A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. <a href="./docs/why-use-maritime.md>Learn why you should start using Maritime today."</a></p>
+  
+  <a href="https://npmjs.org/package/maritime">
+    <img alt="Maritime NPM Version" src="https://img.shields.io/npm/v/maritime?color=blue">
+  </a>
+  <img alt="Minified NPM Module Size" src="https://img.shields.io/bundlephobia/minzip/maritime">
+  <a href="https://travis-ci.org/T0MGithub/maritime">
+    <img alt="Maritime Build Status" src="https://travis-ci.org/T0MGithub/maritime.svg?branch=master">
+  </a>
+  <a href="https://coveralls.io/github/T0MGithub/maritime?branch=master">
+    <img alt="Maritime Coverage Status" src="https://coveralls.io/repos/github/T0MGithub/maritime/badge.svg?branch=master&service=github">
+  </a>
+  <a href="./LICENSE">
+    <img alt="Maritime License Badge" src="https://img.shields.io/badge/license-MIT-blue">
+  </a>
+  <a href="https://npm.runkit.com/maritime">
+    <img alt="Try maritime on RunKit" src="https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen">
+  </a>
+</div>
 
 ```js
 const Maritime = require("maritime");
