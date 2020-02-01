@@ -205,7 +205,7 @@ res.sendFile = function(filePath, options = {}) {
 };
 
 res.redirect = function(url, altName) {
-  if (url === "back") url = this.get("Referrer") || altName || "/";
+  if (url === "back") url = this.req.get("Referrer") || altName || "/";
   this.set("Location", encodeURI(url));
 
   this.statusCode = 302;
