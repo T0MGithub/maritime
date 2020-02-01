@@ -3,9 +3,10 @@
 A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. [Learn why you should start using Maritime today.](/docs/why-use-maritime.md)
 
 [![Maritime NPM Version](https://img.shields.io/npm/v/maritime?color=blue)](https://npmjs.org/package/maritime)
-[![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Build Status](https://travis-ci.org/T0MGithub/maritime.svg?branch=master)](https://travis-ci.org/T0MGithub/maritime)
+![NPM Module Zipped Size](https://img.shields.io/bundlephobia/minzip/maritime)
 [![Coverage Status](https://coveralls.io/repos/github/T0MGithub/maritime/badge.svg?branch=master&service=github)](https://coveralls.io/github/T0MGithub/maritime?branch=master)
+[![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Try maritime on RunKit](https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen)](https://npm.runkit.com/maritime)
 
 ```js
