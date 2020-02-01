@@ -16,7 +16,7 @@ describe("data", function() {
           .get("/")
           .expect(200)
           .expect("", done);
-      })
+      });
 
       it("if JSON sent, should send data as JSON", function(done) {
         const app = new Maritime();
