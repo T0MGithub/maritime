@@ -1,6 +1,6 @@
 ![Maritime NodeJS Web Framework Logo](https://i.imgur.com/psmyh0O.png)
 
-<div style="text-align: center;">
+<div style="text-align: center; width: 100%;">
   <p>A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. <a href="./docs/why-use-maritime.md>Learn why you should start using Maritime today."</a></p>
   
   <a href="https://npmjs.org/package/maritime">
