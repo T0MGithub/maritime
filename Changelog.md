@@ -24,7 +24,7 @@
 
 ### Fixed
 
-- [422e539](https://github.com/T0MGithub/maritime/commit/5c060840a595c06775b1c07252fdb56571ea8dc8) - Don't activate routing engines until routers are mounted, to allow unsafe routes on routers that temporarily have the wrong engine.
+- [422e539](https://github.com/TomPrograms/maritime/commit/5c060840a595c06775b1c07252fdb56571ea8dc8) - Don't activate routing engines until routers are mounted, to allow unsafe routes on routers that temporarily have the wrong engine.
 
 # 0.2.0 - 25/01/2020
 

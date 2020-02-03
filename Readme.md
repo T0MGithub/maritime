@@ -3,9 +3,9 @@
 A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. [Learn why you should start using Maritime today.](/docs/why-use-maritime.md)
 
 [![Maritime NPM Version](https://img.shields.io/npm/v/maritime?color=blue)](https://npmjs.org/package/maritime)
-[![Build Status](https://travis-ci.org/T0MGithub/maritime.svg?branch=master)](https://travis-ci.org/T0MGithub/maritime)
+[![Build Status](https://travis-ci.org/TomPrograms/maritime.svg?branch=master)](https://travis-ci.org/TomPrograms/maritime)
 ![NPM Module Zipped Size](https://img.shields.io/bundlephobia/minzip/maritime)
-[![Coverage Status](https://coveralls.io/repos/github/T0MGithub/maritime/badge.svg?branch=master&service=github)](https://coveralls.io/github/T0MGithub/maritime?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TomPrograms/maritime/badge.svg?branch=master&service=github)](https://coveralls.io/github/TomPrograms/maritime?branch=master)
 [![Maritime License Badge](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Try maritime on RunKit](https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen)](https://npm.runkit.com/maritime)
 
@@ -24,7 +24,7 @@ app.listen(3000);
 
 ## Getting Started
 
-- [Maritime Examples](https://github.com/t0mgithub/maritime-examples) - A set of applications written in Maritime to show various functionalities.
+- [Maritime Examples](https://github.com/TomPrograms/maritime-examples) - A set of applications written in Maritime to show various functionalities.
 
 ## Features
 
@@ -46,7 +46,7 @@ $ npm i maritime
 
 ## Credit
 
-Author: [Tom](https://github.com/t0mgithub)
+Author: [Tom](https://github.com/TomPrograms)
 
 This repository utilises code from other open-source projects, including NPM dependencies and some code from other open-source projects such as [Express](https://github.com/expressjs/express) and [Koa](https://github.com/koajs/koa). Thanks to the contributors to those projects and the wider open source ecosystem.
 

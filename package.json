@@ -3,8 +3,8 @@
   "version": "0.3.0",
   "description": "A new type of NodeJS web framework - providing a clean, full, yet configurable toolkit to develop with NodeJS.",
   "main": "index.js",
-  "repository": "t0mgithub/maritime",
-  "homepage": "https://github.com/t0mgithub/maritime#readme",
+  "repository": "TomPrograms/maritime",
+  "homepage": "https://github.com/TomPrograms/maritime#readme",
   "runkitExampleFilename": "example.js",
   "scripts": {
     "format": "prettier --write {**,**/**}/*.{js,md}",
