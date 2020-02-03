@@ -1,3 +1,9 @@
+# 0.3.1 - 03/02/2020
+
+### Fixed
+
+- Fixed all Github repository links with new repository location due to username change.
+
 # 0.3.0 - 01/02/2020
 
 ### Added
