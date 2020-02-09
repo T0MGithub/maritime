@@ -1,4 +1,5 @@
 <div align="center">
+  <br>
   <img src="https://i.imgur.com/psmyh0O.png" alt="Maritime NodeJS Web Framework Logo">
 
   <p>A new type of NodeJS web framework - providing a clean, full-toolkit to develop with NodeJS. <a href="./docs/why-use-maritime.md">Learn why you should start using Maritime today.</a></p>
@@ -24,6 +25,7 @@
   <a href="https://npm.runkit.com/maritime">
     <img src="https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen" alt="Try Maritime on Runkit">
   </a>
+  <br>
 </div>
 
 ```js
