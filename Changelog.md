@@ -1,3 +1,9 @@
+# 0.3.2 - 09/02/2020
+
+### Changed
+
+- Better changelog
+
 # 0.3.1 - 03/02/2020
 
 ### Fixed
