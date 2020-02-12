@@ -25,8 +25,8 @@
   <a href="https://npm.runkit.com/maritime">
     <img src="https://img.shields.io/badge/try%20on%20runkit-maritime-brightgreen" alt="Try Maritime on Runkit">
   </a>
-  <br>
 </div>
+<br>
 
 ```js
 const Maritime = require("maritime");
