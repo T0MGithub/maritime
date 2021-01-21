@@ -1,6 +1,6 @@
 {
   "name": "maritime",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A new type of NodeJS web framework - providing a clean, full, yet configurable toolkit to develop with NodeJS.",
   "main": "index.js",
   "repository": "TomPrograms/maritime",

@@ -1,3 +1,9 @@
+# 0.3.3 - 21/01/2021
+
+### Removed
+
+- Travis CI and Coveralls
+
 # 0.3.2 - 09/02/2020
 
 ### Changed
