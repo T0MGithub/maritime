@@ -8,15 +8,7 @@
     <img src="https://img.shields.io/npm/v/maritime?color=blue" alt="Maritime NPM Version">
   </a>
   
-  <a href="https://travis-ci.org/TomPrograms/maritime">
-    <img src="https://travis-ci.org/TomPrograms/maritime.svg?branch=master" alt="Maritime Build Status">
-  </a>
-
   <img src="https://img.shields.io/bundlephobia/minzip/maritime" alt="Maritime Zipped Size">
-
-  <a href="https://coveralls.io/github/TomPrograms/maritime?branch=master">
-    <img src="https://coveralls.io/repos/github/TomPrograms/maritime/badge.svg?branch=master&service=github" alt="Maritime Coverage Status">
-  </a>
 
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="Maritime License Badge">

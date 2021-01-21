@@ -11,8 +11,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "test": "mocha ./tests --recursive --exit",
-    "coverage": "nyc npm run test",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc npm run test"
   },
   "author": "Tom",
   "license": "MIT",

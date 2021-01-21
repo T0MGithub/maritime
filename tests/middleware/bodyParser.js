@@ -9,7 +9,6 @@ describe("bodyparser()", function() {
   (bodyParserDependenciesInstalled() ? it : it.skip)(
     "should successfully parse form data",
     function(done) {
-      console;
       const app = new Maritime();
 
       app.use(Maritime.bodyParser());
